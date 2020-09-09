@@ -1,0 +1,496 @@
+/* stop the content overflowing to the sides, especially with negative margins on .row */
+
+#MPOuterMost {
+    overflow-x: hidden;
+}
+
+/* hide .HtmlFooter and .MPBottomMenu, both of which add extra padding/whitespace */
+
+.HtmlFooter, .MPBottomMenu {
+    display: none;
+}
+
+/* remove bottom margin from empty paragraphs (eg. in widgets) to avoid whitespace */
+
+p:empty {
+    margin-bottom: 0;
+}
+
+/* this one's not HL-specific */
+
+/* centres all background images created using the bg image JS/ajax calls for images */
+
+.bg-image, .img-container {
+    background-size: cover;
+    background-position: center;
+}
+
+/* avoids 1px tall sections, especially when they hold JS but no content */
+
+/* can be less specific, but might break other HL functionality */
+
+.home .col-md-12[class*="section"] {
+    min-height: 0;
+}
+
+/* allows for word breaking for emails and profile inbox messages */
+
+body {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* overrides the above word breaking for yes/no toggle buttons in create event */
+
+#event-additional-details-container {
+    overflow-wrap: normal !important;
+    word-wrap: normal !important;
+}
+
+/* resets the padding on col-md-12 full-width sections */
+
+.row-full .col-md-12[class*="section"] {
+    padding: 0;
+}
+
+.row-full .col-md-6[class*="section"], .row-full .col-md-8[class*="section"], .row-full .col-md-4[class*="section"], .row-full .col-md-3[class*="section"] {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* reset alerts to neutral colours */
+
+.alert-warning, .alert-success, .ideation-home .alert.alert-success, .ideation-detail .alert.alert-success {
+    color: inherit;
+    background-color: #f9f9f9;
+    border-color: #f5f5f5;
+}
+
+/*** fix Add Event button styling ***/
+
+.HLEventList .Content>div[id*="ContentPanel"]>.col-md-12.no-pad>.pull-right {
+    float: none !important;
+    text-align: right;
+}
+
+.HLEventList .Content>div[id*="ContentPanel"]>.col-md-12.no-pad>.pull-right+br {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .btn-group>.btn, .btn-group-vertical>.btn {
+        float: left;
+    }
+}
+
+/****** basics ******/
+
+/*** fonts ***/
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    line-height: 1.22;
+    color: #575451;
+}
+
+h1, .h1 {
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1.33;
+    color: #052B3E;
+}
+
+h2, .h2 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #052B3E;
+    border-bottom: 1px solid #052B3E;
+    padding-bottom: 10px;
+}
+
+.HLLandingControl h2, .HLLandingControl .heading h2 {
+    padding-left: 0;
+}
+
+h3, .h3, .HLLandingControl h3, .HLLandingControl h3 a {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.2;
+    color: #052B3E;
+}
+
+a {
+    font-weight: 700;
+    color: #AC121B;
+    text-decoration: underline;
+}
+
+/*** transitions ***/
+
+a, a:hover, a:focus, button, button:hover, button:focus, input, input:hover, input:focus {
+    transition: .3s;
+}
+
+/*** round profile images ***/
+
+.Welcome .imgButton.btn, a[id*="ProfileImage"]:not([id*="NameLink"]):not([id*="ManageDropDown"]), a[id*="UserImageDisplay"], a[id*="Contacts_PictureLink"], a[id*="lnkDisplay"], a[id*="Welcome_Details_ProfileLink"], .list-group-item-image, a[title="User Name Image"], a[oldtitle="User Name Image"], .member-dashboard-img a, .dashboard-col-3 ul li .col-sm-2 a, .HLEngagement .Picture a, td.ProfilePic>a {
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background-color: #d8d9db;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+}
+
+.Welcome .imgButton.btn {
+    background-color: #fff;
+}
+
+.list-group-item-image {
+    width: 40px;
+    height: 40px;
+}
+
+.list-group-item-nochild .list-group-item-image {
+    width: 20px;
+    height: 20px;
+}
+
+.Welcome button.btn-default.btn.imgButton {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    border: none;
+    margin-left: 0;
+}
+
+.text-muted-h2 a[id*="ImageControl_lnkDisplay"] {
+    width: 140px;
+    height: 140px;
+    background: #f9f9f9;
+}
+
+.HLEngagement .Picture a {
+    width: 50px;
+    height: 50px;
+}
+
+a[id*="Welcome_Details_ProfileLink"] {
+    width: 60px;
+    height: 60px;
+}
+
+.imgButton img, a[id*="ProfileImage"] img, a[id*="UserImageDisplay"] img, a[id*="Contacts_PictureLink"] img, a[id*="lnkDisplay"] img, a[id*="Welcome_Details_ProfileLink"] img, .list-group-item-image img, a[title="User Name Image"] img, a[oldtitle="User Name Image"] img, .member-dashboard-img img, .dashboard-col-3 ul li .col-sm-2 a img, .HLEngagement .Picture a img, td.ProfilePic>a>img {
+    position: relative;
+    max-height: 100% !important;
+    width: auto;
+}
+
+.member-directory .member-picture {
+    text-align: center;
+}
+
+/****** header ******/
+
+#MPOuterMost.full #HEADER {
+    max-width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+#MPOuterHeader>.col-md-12, #HEADER>.col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*** logo and TTL on one line ***/
+
+#Logo {
+    float: left;
+    position: relative;
+    z-index: 20;
+}
+
+#MPheader>div.row:first-child {
+    float: right;
+    padding: 8px 0;
+}
+
+.skiplinkholder a, .skiplinkholder a:link, .skiplinkholder a:visited {
+    left: -500%;
+    top: -250px;
+}
+
+.skiplinkholder a:focus, .skiplinkholder a:active {
+    left: 0;
+    top: 0;
+}
+
+/*** logo ***/
+
+#MPheader>div#Logo {
+    padding: 20px 0;
+}
+
+/*** top text links ***/
+
+#MPAuxNav ul.level1 li a {
+    border: none;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #818181;
+    padding: 0;
+    margin: 12px 20px 0 0;
+    text-decoration: none;
+}
+
+/*** login button ***/
+
+#Welcome_LoginLink {
+    background: transparent;
+    border: 1px solid #AC121B;
+    border-radius: 5px;
+    padding: 4px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    color: #ac121b;
+    margin-top: 6px;
+}
+
+/*** search ***/
+
+#searchColumn {
+    display: none;
+}
+
+.search-bar-top {
+    float: right;
+    width: 245px;
+    margin-right: 15px;
+    margin-top: 6px;
+}
+
+.search-bar-top .SearchInputs, #searchColumn .SearchInputs {
+    background: #FAF8F7;
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.search-bar-top .form-control, #searchColumn .form-control {
+    background: transparent;
+    border: none;
+    height: 28px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.search-bar-top button[id*="SearchButton"], #searchColumn button[id*="SearchButton"] {
+    height: 28px;
+    width: 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: center;
+    color: #AC121B;
+}
+
+.search-bar-top button[id*="SearchButton"] .glyphicon-search, #searchColumn button[id*="SearchButton"] .glyphicon-search {
+    width: auto;
+    vertical-align: unset !important;
+    top: auto;
+}
+
+.search-bar-top button[id*="SearchButton"] .glyphicon-search::before, #searchColumn button[id*="SearchButton"] .glyphicon-search::before {
+    font-family: CRNetwork;
+    content: '\f000';
+}
+
+/*** profile dropdown ***/
+
+#BtnShowProfile {
+    display: none;
+}
+
+/****** main nav ******/
+
+#NAV, .navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+#NAV {
+    position: absolute;
+    bottom: 5px;
+    right: 75px;
+}
+
+#MPOuterMost.full #MPButtonBar {
+    max-width: 100%;
+}
+
+#NAV .navbar-nav {
+    float: right;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.disabled>a {
+    color: #052B3E;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.2;
+    padding: 20px;
+}
+
+/* removing extraneous padding on desktop */
+
+@media (min-width: 768px) {
+    #NAV .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #NAV .col-md-12, .navbar-collapse {
+        padding: 0;
+    }
+}
+
+/*** caret ***/
+
+.navbar-default .navbar-nav>.dropdown>a .caret {
+    border-bottom: none;
+    border-top: none;
+    height: auto;
+    width: auto;
+}
+
+.navbar-default .navbar-nav>.dropdown>a .caret::before {
+    font-family: CRNetwork;
+    content: '\f001';
+    color: #c4c4c4;
+}
+
+/*** dropdowns ***/
+
+.navbar-nav>li>.dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+/****** responsive ******/
+
+@media (max-width: 1360px) {
+    #MPOuterMost.full #HEADER {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    #NAV {
+        right: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    #Logo>.col-md-12, #MPheader>.row:first-child>.col-md-12 {
+        padding: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    #NAV {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        z-index: 10;
+        margin-top: -60px;
+    }
+    #searchColumn {
+        display: block;
+        max-width: 100%;
+        float: none !important;
+    }
+    .search-bar-top {
+        display: none;
+    }
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    .navbar-collapse.collapse.in {
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+    .navbar-nav .open .dropdown-menu {
+        position: static;
+        float: none;
+        width: auto;
+        margin-top: 0;
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+    .navbar-nav .open .dropdown-menu>li>a {
+        line-height: 20px;
+    }
+    .navbar-nav .open .dropdown-menu>li>a, .navbar-nav .open .dropdown-menu .dropdown-header {
+        padding: 5px 15px 5px 25px;
+    }
+}
+@media (max-width: 600px) {
+    #MPheader > div.row:first-child {
+        float: none;
+    }
+    #MPheader>div#Logo {
+        padding-top: 0;
+    }
+    #NAV {
+        margin-top: -75px;
+    }
+}
+@media (max-width: 375px) {
+    #Logo,
+    #MPheader > div.row:first-child .pull-right:last-child {
+        max-width: calc(100% - 40px);
+    }
+    #MPAuxNav ul.level1 li {
+        float: none !important;
+    }
+    #MPAuxNav ul.level1 li:first-child a {
+        margin-top: 0;
+    }
+}
