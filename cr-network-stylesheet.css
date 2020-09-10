@@ -195,6 +195,35 @@ a[id*="Welcome_Details_ProfileLink"] {
     text-align: center;
 }
 
+/****** buttons ******/
+.make-buttons em {
+    display: inline-block;
+    margin: -5px;
+}
+.make-buttons em a {
+    margin: 5px;
+}
+.make-buttons em a {
+    display: inline-block;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px 35px;
+    background: #AC121B;
+    border-radius: 5px;
+}
+
+/****** form controls ******/
+.form-control {
+    background: #FAF8F7;
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    border: none;
+}
+
 /****** header ******/
 
 #MPOuterMost.full #HEADER {
@@ -292,6 +321,7 @@ a[id*="Welcome_Details_ProfileLink"] {
     height: 28px;
     font-size: 14px;
     line-height: 16px;
+    box-shadow: none;
 }
 
 .search-bar-top button[id*="SearchButton"], #searchColumn button[id*="SearchButton"] {
@@ -387,6 +417,170 @@ a[id*="Welcome_Details_ProfileLink"] {
     left: auto;
 }
 
+/****** hero ******/
+.hero {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/rocket.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 200%;
+    position: relative;
+    padding: 0 calc(50% - 600px);
+    display: flex;
+    align-items: center;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background: linear-gradient(93.75deg, #f9f8f7, 8.97%, #e3ded7 100%);
+    z-index: -1;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    background: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-waves-header.png');
+    background-size: 100% auto;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+.hero > .col-md-6:not(:empty) {
+    padding-top: 60px;
+    padding-bottom: 35px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 50%;
+    float: none;
+    z-index: 10;
+}
+.hero h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.hero p {
+    font-weight: 600;
+    font-size: 21px;
+    color: #052B3E;
+}
+.hero p:last-of-type {
+    margin-bottom: 25px;
+}
+
+/*** login section ***/
+.hero-login .panel {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 15px rgba(0, 0, 0, 0.08);
+    background: #fff;
+    border-radius: 5px;
+    border: none;
+}
+.hero-login .panel-heading {
+    display: none;
+}
+.hero-login .panel-body {
+    padding: 20px 25px;
+}
+.hero-login .form-group {
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+}
+.hero-login .form-group > div {
+    padding: 0;
+}
+
+
+/****** footer ******/
+#MPOuterFooter {
+    background: #1C2225;
+    padding: 40px calc(50% - 600px);
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.33;
+}
+#MPFooterLink,
+#MPCopyright {
+    display: none;
+}
+#FOOTER h2 {
+    margin-top: 0;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+}
+.footer-logo {
+    margin-bottom: 45px;
+    position: relative;
+}
+.footer-logo::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);;
+}
+.footer-logo .HtmlContent {
+    padding: 0 35px;
+    background: #1c2225;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    position: relative;
+}
+.footer-logo img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-contact,
+.footer-links {
+    margin-bottom: 20px;
+}
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+}
+.footer-links a:hover,
+.footer-links a:focus {
+    color: #15A0BA;
+    text-decoration: underline;
+}
+.footer-social {
+    margin-top: 34px;
+    margin-bottom: 42px;
+}
+.footer-social a {
+    display: inline-block;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    margin: 12px;
+    font-weight: 400;
+}
+.footer-social a:hover,
+.footer-social a:focus {
+    color: #15a0ba;
+}
+.footer-copyright {
+    font-size: 12px;
+    line-height: 14px;
+}
+.footer-copyright a {
+    color: #15a0ba;
+    font-weight: 400;
+}
+
 /****** responsive ******/
 
 @media (max-width: 1360px) {
@@ -406,6 +600,12 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 
 @media (max-width: 991px) {
+    .footer-contact,
+    .footer-links {
+        text-align: center;
+    }
+
+    /*** nav ***/
     #NAV {
         position: relative;
         bottom: auto;
