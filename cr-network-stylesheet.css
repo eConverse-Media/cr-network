@@ -126,6 +126,14 @@ h3, .h3, .HLLandingControl h3, .HLLandingControl h3 a {
     line-height: 1.2;
     color: #052B3E;
 }
+h4, .h4 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #15A0BA;
+}
 
 a {
     font-weight: 700;
@@ -141,7 +149,8 @@ a, a:hover, a:focus, button, button:hover, button:focus, input, input:hover, inp
 
 /*** round profile images ***/
 
-.Welcome .imgButton.btn, a[id*="ProfileImage"]:not([id*="NameLink"]):not([id*="ManageDropDown"]), a[id*="UserImageDisplay"], a[id*="Contacts_PictureLink"], a[id*="lnkDisplay"], a[id*="Welcome_Details_ProfileLink"], .list-group-item-image, a[title="User Name Image"], a[oldtitle="User Name Image"], .member-dashboard-img a, .dashboard-col-3 ul li .col-sm-2 a, .HLEngagement .Picture a, td.ProfilePic>a {
+.Welcome .imgButton.btn, a[id*="ProfileImage"]:not([id*="NameLink"]):not([id*="ManageDropDown"]), a[id*="UserImageDisplay"], a[id*="Contacts_PictureLink"], a[id*="lnkDisplay"], a[id*="Welcome_Details_ProfileLink"], .list-group-item-image, a[title="User Name Image"], a[oldtitle="User Name Image"], .member-dashboard-img a, .dashboard-col-3 ul li .col-sm-2 a, .HLEngagement .Picture a, td.ProfilePic>a,
+.card h5 > strong {
     border-radius: 50%;
     overflow: hidden;
     position: relative;
@@ -192,7 +201,8 @@ a[id*="Welcome_Details_ProfileLink"] {
     height: 60px;
 }
 
-.imgButton img, a[id*="ProfileImage"] img, a[id*="UserImageDisplay"] img, a[id*="Contacts_PictureLink"] img, a[id*="lnkDisplay"] img, a[id*="Welcome_Details_ProfileLink"] img, .list-group-item-image img, a[title="User Name Image"] img, a[oldtitle="User Name Image"] img, .member-dashboard-img img, .dashboard-col-3 ul li .col-sm-2 a img, .HLEngagement .Picture a img, td.ProfilePic>a>img {
+.imgButton img, a[id*="ProfileImage"] img, a[id*="UserImageDisplay"] img, a[id*="Contacts_PictureLink"] img, a[id*="lnkDisplay"] img, a[id*="Welcome_Details_ProfileLink"] img, .list-group-item-image img, a[title="User Name Image"] img, a[oldtitle="User Name Image"] img, .member-dashboard-img img, .dashboard-col-3 ul li .col-sm-2 a img, .HLEngagement .Picture a img, td.ProfilePic>a>img,
+.card h5 > strong > img {
     position: relative;
     max-height: 100% !important;
     width: auto;
@@ -287,6 +297,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 .padding-75.row > div[class*="col-md-"]:not(:empty) {
     padding-top: 75px;
     padding-bottom: 75px;
+}
+.margin-top-150 {
+    margin-top: 150px;
 }
 @media (max-width: 991px) {
     .padding-110.row > div[class*="col-md-"]:not(:empty),
@@ -861,6 +874,69 @@ a[id*="Welcome_Details_ProfileLink"] {
     background: #c94048;
 }
 
+/****** grey section with shield image ******/
+
+/*** cards ***/
+.card {
+    background: #fff;
+    padding: 30px 35px;
+    border-radius: 5px;
+    width: 560px;
+    max-width: 100%;
+    position: relative;
+}
+.card h4,
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.card h5 {
+    background: #F4F2EF;
+    border-radius: 100px;
+    display: inline-block;
+    padding: 9px 18px 9px 9px;
+    line-height: 40px;
+    margin-top: 25px;
+}
+.card h5 > strong {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    float: left;
+}
+.card h5 a {
+    text-decoration: none;
+}
+.get-the-scoop {
+    margin-top: 45px;
+    margin-bottom: 130px;
+}
+.card.floating-button em {
+    margin: 0;
+}
+.card.floating-button em a {
+    position: absolute;
+    right: 35px;
+    bottom: 0;
+    transform: translateY(50%);
+    margin: 0;
+}
+
+/*** shield image ***/
+.clip-path-svg {
+    position: absolute;
+    z-index: -10;
+}
+.clip-me-shield {
+    clip-path: url(#shield-clip-path);
+    height: 601px;
+    width: 449px;
+    max-width: 100%;
+    position: absolute;
+    right: 40px;
+    top: -125px;
+}
+
 /****** footer ******/
 #MPOuterFooter {
     background: #1C2225;
@@ -868,6 +944,7 @@ a[id*="Welcome_Details_ProfileLink"] {
     color: #fff;
     font-size: 15px;
     line-height: 1.33;
+    position: relative;
 }
 #MPFooterLink,
 #MPCopyright {
@@ -957,7 +1034,8 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 
 @media (max-width: 1230px) {
-    .hero {
+    .hero,
+    .bg-grey.row-full.inner-row-wide > .col-md-12 {
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -1066,6 +1144,15 @@ a[id*="Welcome_Details_ProfileLink"] {
     }
     .navbar-nav .open .dropdown-menu>li>a, .navbar-nav .open .dropdown-menu .dropdown-header {
         padding: 5px 15px 5px 25px;
+    }
+}
+@media (max-width: 650px) {
+    .clip-me-shield {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 280px;
+        height: 375px;
     }
 }
 @media (max-width: 600px) {
