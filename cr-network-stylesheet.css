@@ -151,6 +151,7 @@ a, a:hover, a:focus, button, button:hover, button:focus, input, input:hover, inp
     align-items: center;
     width: 45px;
     height: 45px;
+    padding: 0;
 }
 
 .Welcome .imgButton.btn {
@@ -283,19 +284,29 @@ a[id*="Welcome_Details_ProfileLink"] {
     padding-top: 110px;
     padding-bottom: 110px;
 }
+.padding-75.row > div[class*="col-md-"]:not(:empty) {
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
 @media (max-width: 991px) {
-    .padding-110.row > div[class*="col-md-"]:not(:empty) {
+    .padding-110.row > div[class*="col-md-"]:not(:empty),
+    .padding-75.row > div[class*="col-md-"]:not(:empty) {
         padding-bottom: 0;
+    }
+    .padding-75.row > div[class*="col-md-"]:not(:empty):last-child {
+        padding-bottom: 75px;
     }
     .padding-110.row > div[class*="col-md-"]:not(:empty):last-child {
         padding-bottom: 110px;
     }
 }
 @media (max-width: 768px) {
-    .padding-110.row > div[class*="col-md-"]:not(:empty) {
+    .padding-110.row > div[class*="col-md-"]:not(:empty),
+    .padding-75.row > div[class*="col-md-"]:not(:empty) {
         padding-top: 45px;
     }
-    .padding-110.row > div[class*="col-md-"]:not(:empty):last-child {
+    .padding-110.row > div[class*="col-md-"]:not(:empty):last-child,
+    .padding-75.row > div[class*="col-md-"]:not(:empty):last-child {
         padding-bottom: 45px;
     }
 }
@@ -730,13 +741,15 @@ a[id*="Welcome_Details_ProfileLink"] {
 
 /****** CTA icon sections ******/
 .icon-cta {
-    padding-top: 90px;
     padding-bottom: 40px;
     width: 320px;
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
     position: relative;
+}
+.bg-grey .icon-cta {
+    padding-top: 90px;
 }
 @media (min-width: 992px) {
     .col-md-4:first-child > .icon-cta {
@@ -756,9 +769,13 @@ a[id*="Welcome_Details_ProfileLink"] {
     margin-top: 30px;
     margin-bottom: 15px;
 }
+.icon-cta a {
+    text-decoration: none;
+    font-weight: 400;
+}
 
 /*** stars in background ***/
-.col-md-4:first-child .icon-cta::before {
+.bg-grey .col-md-4:first-child .icon-cta::before {
     content: '';
     background: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/small-star1.png');
     background-position: top left;
@@ -769,7 +786,7 @@ a[id*="Welcome_Details_ProfileLink"] {
     width: 61px;
     height: 66px;
 }
-.col-md-4:last-child .icon-cta::after {
+.bg-grey .col-md-4:last-child .icon-cta::after {
     content: '';
     background: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/small-star2.png');
     background-position: top right;
@@ -802,13 +819,20 @@ a[id*="Welcome_Details_ProfileLink"] {
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: 100%;
-    padding: 34px 54px;
+    padding: 34px 54px 164px 54px;
+    position: relative;
 }
 .testimonial h2 {
     margin-top: 0;
     color: #fff;
     font-weight: 600;
     border: none;
+}
+.testimonial-bottom-content {
+    position: absolute;
+    bottom: 34px;
+    left: 54px;
+    right: 54px;
 }
 .testimonial h4,
 .testimonial p {
@@ -825,6 +849,7 @@ a[id*="Welcome_Details_ProfileLink"] {
 .testimonial p:last-child {
     padding: 5px;
     display: inline-block;
+    margin-bottom: 0;
 }
 .testimonial.bg-black p:last-child {
     background: #5d6366;
@@ -1082,6 +1107,11 @@ a[id*="Welcome_Details_ProfileLink"] {
         text-align: left;
     }
     .testimonial .HtmlContent {
-        padding: 15px 20px;
+        padding: 15px 20px 145px 20px;
+    }
+    .testimonial-bottom-content {
+        left: 20px;
+        right: 20px;
+        bottom: 15px;
     }
 }

@@ -19,10 +19,19 @@ function handleAppendMe() {
     });
 }
 
+function handleTestimonials() {
+    $('.testimonial').each(function () {
+        var self = $(this);
+
+        $(self).find('.HtmlContent > *:not(h2)').wrapAll('<div class="testimonial-bottom-content" />');
+    });
+}
+
 $(function () {
     // handle search
     $('.search-bar-top').insertAfter('#MPheader > .row:first-child > .col-md-12:first-child > .pull-right:first-child');
 
     handleLoginPanel();
     handleAppendMe();
+    handleTestimonials();
 });
