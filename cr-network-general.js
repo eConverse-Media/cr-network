@@ -27,6 +27,71 @@ function handleTestimonials() {
     });
 }
 
+function handleLandingControls() {
+    $('.HLLandingControl ul li').each(function () {
+        var self = $(this),
+            byline = $(self).find('.ByLine'),
+            postedIn = $(self).find('div[id*="FoundIn"]');
+
+        $(byline).appendTo(self);
+        $(postedIn).appendTo(self);
+    });
+
+    // handle event date blocks
+    $('.home .HLEventList ul li').each(function () {
+        var self = $(this),
+            month = $(self).find('.date-block .calendar-month span').text();
+
+        month = month.substring(0, 3);
+        $(self).find('.date-block .calendar-month').text(month);
+
+        var dateBlock = $(self).find('.date-block'),
+            month = $(dateBlock).find('.calendar-month');
+
+        $(month).appendTo(dateBlock);
+    });
+}
+
+function handlePoll() {
+
+    var hasPollHtml = false;
+
+    setInterval(function () {
+        if (hasPollHtml) {
+            return;
+        }
+        if (!!($('.home .hlc-blockui-busy').html())) {
+            $('.home .hlc-blockui-busy').closest('.ContentUserControl').addClass('callout-card blue-card');
+            hasPollHtml = true;
+        }
+    }, 500);
+    
+}
+
+function handleGreyCallout() {
+    $('.callout-card .HLLandingControl ul li').each(function () {
+        var self = $(this),
+            profilePicture = $(self).find('.title-row > .col-md-2'),
+            byline = $(self).find('.ByLine');
+
+        $(profilePicture).wrap('<div class="profile-picture-byline" />');
+        var profilePictureContainer = $(self).find('.profile-picture-byline');
+        $(byline).appendTo(profilePictureContainer);
+        $(profilePictureContainer).appendTo(self);
+
+        // handle comma in byline
+        var bylineLink = $(byline).find('a').clone();
+
+        $(byline).find('a').remove();
+        var bylineText = $(byline).text();
+        bylineText = $.trim(bylineText);
+        bylineText = bylineText.substring(2);
+        $(byline).text(bylineText);
+
+        $(byline).prepend(bylineLink);
+    });
+}
+
 $(function () {
     // handle search
     $('.search-bar-top').insertAfter('#MPheader > .row:first-child > .col-md-12:first-child > .pull-right:first-child');
@@ -34,4 +99,7 @@ $(function () {
     handleLoginPanel();
     handleAppendMe();
     handleTestimonials();
+    handleLandingControls();
+    handlePoll();
+    handleGreyCallout();
 });
