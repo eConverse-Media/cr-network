@@ -61,7 +61,7 @@ function handlePoll() {
             return;
         }
         if (!!($('.home .hlc-blockui-busy').html())) {
-            $('.home .hlc-blockui-busy').closest('.ContentUserControl').addClass('callout-card blue-card');
+            $('.home .hlc-blockui-busy').closest('.ContentUserControl').addClass('callout-card blue-card small-h2');
             hasPollHtml = true;
         }
     }, 500);
@@ -92,6 +92,10 @@ function handleGreyCallout() {
     });
 }
 
+function handleTags() {
+    $('.tag-button').wrapAll('<div class="tag-buttons" />');
+}
+
 $(function () {
     // handle search
     $('.search-bar-top').insertAfter('#MPheader > .row:first-child > .col-md-12:first-child > .pull-right:first-child');
@@ -102,4 +106,5 @@ $(function () {
     handleLandingControls();
     handlePoll();
     handleGreyCallout();
+    handleTags();
 });

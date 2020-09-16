@@ -345,6 +345,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 .margin-bottom-60 {
     margin-bottom: 60px;
 }
+.margin-bottom-45 {
+    margin-bottom: 45px;
+}
 .home div[class*="section"] {
     min-height: 0;
 }
@@ -622,19 +625,33 @@ a[id*="Welcome_Details_ProfileLink"] {
     background: linear-gradient(104.11deg, #052B3E 1.69%, #15A0BA 127.35%);
     color: #fff;
 }
-.callout-card h2,
-.callout-card .HLLandingControl h2 {
+.red-card.callout-card {
+    background: linear-gradient(98.75deg, #1C2225 -1.08%, #AC121B 137.68%), #052B3E;
+    color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 15px rgba(0, 0, 0, 0.08);
+}
+.callout-card > .HtmlContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 135px;
+}
+.callout-card.small-h2 h2,
+.callout-card.small-h2 .HLLandingControl h2 {
     text-transform: uppercase;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.22;
     letter-spacing: 0.05em;
+}
+.callout-card h2,
+.callout-card .HLLandingControl h2 {
     border: none;
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
 }
-.callout-card h2::before {
+.callout-card.small-h2 h2::before {
     font-family: CRNetwork;
     content: '\f005';
     float: left;
@@ -648,7 +665,12 @@ a[id*="Welcome_Details_ProfileLink"] {
 .blue-card.callout-card h2,
 .blue-card.callout-card h4,
 .blue-card.callout-card h5,
-.blue-card.callout-card .text-muted {
+.blue-card.callout-card .text-muted,
+.red-card.callout-card,
+.red-card.callout-card h2,
+.red-card.callout-card h4,
+.red-card.callout-card h5,
+.red-card.callout-card .text-muted {
     color: #fff;
 }
 .blue-card .hlc-blockui-busy > .row:first-child > .col-md-12,
@@ -748,6 +770,82 @@ a[id*="Welcome_Details_ProfileLink"] {
     color: #AC121B;
     text-decoration: none;
     letter-spacing: 0;
+}
+
+/****** HTML content card with link and icon ******/
+.callout-card .HtmlContent {
+    position: relative;
+}
+.callout-card > .HtmlContent > a {
+    align-self: flex-end;
+    color: #fff;
+    text-decoration: none;
+}
+.callout-card.icon {
+    position: relative;
+}
+.callout-card.icon::before {
+    font-family: CRNetwork;
+    font-size: 120px;
+    color: #fff;
+    opacity: 0.15;
+    position: absolute;
+    bottom: 20px;
+    right: 45px;
+}
+.callout-card.icon.bell::before {
+    content: '\f006';
+}
+
+/****** tag buttons ******/
+.tag-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px -10px 35px -10px;
+}
+.tag-button {
+    padding: 10px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 50%;
+    display: flex;
+}
+.tag-button.make-buttons .HtmlContent,
+.tag-button.make-buttons em {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 100%;
+    display: flex;
+}
+.tag-button.make-buttons em,
+.tag-button.make-buttons em a {
+    margin: 0;
+}
+.tag-button.make-buttons em a {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 100%;
+    background: #F5F2EF;
+    color: #AC121B;
+    position: relative;
+}
+.tag-button.make-buttons em a::before {
+    content: '';
+    background: #fff;
+    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+/*** changing flex-basis for small desktops + phone screens ***/
+@media (min-width: 992px) and (max-width: 1090px),
+(max-width: 375px) {
+    .tag-button {
+        flex-basis: 100%;
+    }
 }
 
 /****** hero ******/
