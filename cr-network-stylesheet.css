@@ -115,6 +115,22 @@ h2, .h2 {
     line-height: 1.6;
     margin-top: 0;
 }
+.small-h2 h2,
+.small-h2 .HLLandingControl h2 {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.05em;
+    border: none;
+}
+.small-h2 h2::before {
+    font-family: CRNetwork;
+    content: '\f005';
+    float: left;
+    margin-right: 15px;
+    color: #ac121b;
+}
 
 .HLLandingControl h2, .HLLandingControl .heading h2 {
     padding-left: 0;
@@ -218,6 +234,54 @@ a[id*="Welcome_Details_ProfileLink"] {
 
 .member-directory .member-picture {
     text-align: center;
+}
+
+/*** image containers ***/
+.img-container {
+    position: relative;
+}
+.img-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+.img-container.loading::before {
+    animation: colorchange 1.5s infinite;
+    -webkit-animation: colorchange 1.5s infinite;
+    opacity: 1;
+    transition: .3s;
+}
+
+@keyframes colorchange {
+    0% {
+        background: #c4c4c4;
+    }
+
+    50% {
+        background: #4b4b4b;
+    }
+
+    100% {
+        background: #c4c4c4;
+    }
+}
+
+@-webkit-keyframes colorchange {
+    0% {
+        background: #c4c4c4;
+    }
+
+    50% {
+        background: #4b4b4b;
+    }
+
+    100% {
+        background: #c4c4c4;
+    }
 }
 
 /****** buttons ******/
@@ -348,6 +412,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 .margin-bottom-45 {
     margin-bottom: 45px;
 }
+.margin-top-25 {
+    margin-top: 25px;
+}
 .home div[class*="section"] {
     min-height: 0;
 }
@@ -386,11 +453,17 @@ a[id*="Welcome_Details_ProfileLink"] {
     background-color: #FAF8F7;
     position: relative;
 }
-.bg-grey.has-waves {
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/waves-grey.png');
+.bg-grey.has-waves,
+.bg-grey.has-waves-white {
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: 100% auto;
+}
+.bg-grey.has-waves {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/waves-grey.png');
+}
+.bg-grey.has-waves-white {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-waves-general.png');
 }
 .bg-grey.has-star > div[class*="section"]:last-child:not(:empty)::after,
 .bg-grey.has-star > .row:first-child > div[class*="section"]:last-child:not(:empty)::after {
@@ -636,27 +709,12 @@ a[id*="Welcome_Details_ProfileLink"] {
     justify-content: space-between;
     min-height: 135px;
 }
-.callout-card.small-h2 h2,
-.callout-card.small-h2 .HLLandingControl h2 {
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.22;
-    letter-spacing: 0.05em;
-}
 .callout-card h2,
 .callout-card .HLLandingControl h2 {
     border: none;
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-}
-.callout-card.small-h2 h2::before {
-    font-family: CRNetwork;
-    content: '\f005';
-    float: left;
-    margin-right: 15px;
-    color: #ac121b;
 }
 .blue-card.callout-card h2::before {
     color: #15a0ba;
@@ -725,9 +783,6 @@ a[id*="Welcome_Details_ProfileLink"] {
 
 /*** card with landing control ***/
 
-.callout-card .sort-options-container {
-    display: none;
-}
 .callout-card .HLLandingControl ul {
     padding-top: 45px;
 }
@@ -735,7 +790,8 @@ a[id*="Welcome_Details_ProfileLink"] {
     padding-bottom: 0;
     margin-bottom: 0;
 }
-.callout-card .HLLandingControl ul li .title-row .col-sm-10.col-md-10 {
+.callout-card .HLLandingControl ul li .title-row .col-sm-10.col-md-10,
+.HLLandingControl .callout-card .title-row .col-sm-10.col-md-10 {
     width: 100%;
 }
 .callout-card .HLLandingControl ul li h3 {
@@ -757,12 +813,14 @@ a[id*="Welcome_Details_ProfileLink"] {
     width: 35px;
     height: 35px;
 }
-.callout-card .HLLandingControl ul li .ByLine {
+.callout-card .HLLandingControl ul li .ByLine,
+.HLLandingControl .callout-card .ByLine {
     padding-left: 20px;
     padding-top: 0;
     letter-spacing: 0.04em;
 }
-.callout-card .HLLandingControl ul li .ByLine a {
+.callout-card .HLLandingControl ul li .ByLine a,
+.HLLandingControl .callout-card .ByLine a {
     display: block;
     font-weight: 700;
     font-size: 18px;
@@ -770,6 +828,67 @@ a[id*="Welcome_Details_ProfileLink"] {
     color: #AC121B;
     text-decoration: none;
     letter-spacing: 0;
+}
+
+/****** questions that need answered with cards ******/
+.unanswered-questions {
+    border: 1px solid #AC121B;
+    border-radius: 5px;
+    padding: 40px;
+    margin-top: 25px;
+    position: relative;
+}
+.unanswered-questions .HLLandingControl .row.heading > .col-md-12 {
+    position: static;
+}
+.unanswered-questions .HLLandingControl h2 {
+    color: #ac121b;
+    position: absolute;
+    top: -25px;
+    left: -20px;
+    background: #fff;
+    padding: 0 15px 5px 0;
+    line-height: 40px;
+    border: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.unanswered-questions h2::before {
+    font-family: CRNetwork;
+    content: '\f007';
+    margin-right: 10px;
+    font-size: 40px;
+    float: left;
+}
+
+.unanswered-questions .HLLandingControl .Content ul {
+    padding-top: 0;
+}
+.unanswered-questions .HLLandingControl ul li.callout-card {
+    position: relative;
+    padding: 20px 30px 50px 30px;
+    margin-bottom: 35px;
+}
+.unanswered-questions .HLLandingControl ul li.callout-card:last-child {
+    margin-bottom: 0;
+}
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline {
+    padding-left: 55px;
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+}
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline .col-md-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"] {
+    border: 5px solid #fff;
+}
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"] img {
+    width: 55px !important;
+    height: 55px !important;
 }
 
 /****** HTML content card with link and icon ******/
@@ -1051,11 +1170,14 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 
 /****** landing controls ******/
-
+.home .sort-options-container {
+    display: none;
+}
 .ContentUserControl .HLLandingControl,
 .HLLandingControl .Content {
     padding: 0;
     border: none;
+    margin: 0;
 }
 .HLLandingControl .Content ul {
     padding-top: 25px;
@@ -1214,6 +1336,34 @@ a[id*="Welcome_Details_ProfileLink"] {
     font-size: 40px;
     line-height: 1.2;
     display: inline-block;
+}
+
+/****** homepage blogs ******/
+.home .HLRecentBlogs {
+    padding-top: 40px;
+}
+.home .HLRecentBlogs ul {
+    display: flex;
+    margin-left: -25px;
+    margin-right: -25px;
+}
+.home .HLRecentBlogs ul li {
+    flex-basis: calc(50% - 50px);
+    margin: 0 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 0 15px rgba(0,0,0,0.08);
+    background: #fff;
+}
+.home .HLRecentBlogs ul li .img-container {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.home .HLRecentBlogs ul li .text-container {
+    padding: 25px 35px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 /****** CTA icon sections ******/
@@ -1652,6 +1802,26 @@ a[id*="Welcome_Details_ProfileLink"] {
     .hero-login .panel-body .form-group .col-md-5,
     .hero-login .panel-body .form-group .col-md-7 {
         flex-basis: 100%;
+    }
+}
+@media (max-width: 475px) {
+    h2, .h2,
+    h3, .h3, .HLLandingControl h3, .HLLandingControl h3 a {
+        font-size: 18px;
+    }
+    .unanswered-questions .HLLandingControl h2 {
+        left: -14px;
+        top: -22px;
+    }
+    .unanswered-questions h2::before {
+        font-size: 28px;
+    }
+    .unanswered-questions {
+        padding: 15px;
+    }
+    .unanswered-questions .HLLandingControl ul li.callout-card {
+        margin-bottom: 20px;
+        padding-bottom: 65px;
     }
 }
 @media (max-width: 375px) {

@@ -52,6 +52,10 @@ function handleLandingControls() {
     });
 }
 
+function handleUnansweredQuestions() {
+    $('.unanswered-questions .HLLandingControl ul li').addClass('callout-card');
+}
+
 function handlePoll() {
 
     var hasPollHtml = false;
@@ -61,39 +65,63 @@ function handlePoll() {
             return;
         }
         if (!!($('.home .hlc-blockui-busy').html())) {
-            $('.home .hlc-blockui-busy').closest('.ContentUserControl').addClass('callout-card blue-card small-h2');
+            $('.home .hlc-blockui-busy').closest('.ContentUserControl').addClass('callout-card blue-card small-h2 margin-top-25');
             hasPollHtml = true;
         }
     }, 500);
     
 }
 
-function handleGreyCallout() {
-    $('.callout-card .HLLandingControl ul li').each(function () {
-        var self = $(this),
-            profilePicture = $(self).find('.title-row > .col-md-2'),
-            byline = $(self).find('.ByLine');
+function handleByLineAndPicture(self) {
+    var profilePicture = $(self).find('.title-row > .col-md-2'),
+        byline = $(self).find('.ByLine');
 
-        $(profilePicture).wrap('<div class="profile-picture-byline" />');
-        var profilePictureContainer = $(self).find('.profile-picture-byline');
-        $(byline).appendTo(profilePictureContainer);
-        $(profilePictureContainer).appendTo(self);
+    $(profilePicture).wrap('<div class="profile-picture-byline" />');
+    var profilePictureContainer = $(self).find('.profile-picture-byline');
+    $(byline).appendTo(profilePictureContainer);
+    $(profilePictureContainer).appendTo(self);
 
-        // handle comma in byline
-        var bylineLink = $(byline).find('a').clone();
+    // handle comma in byline
+    var bylineLink = $(byline).find('a').clone();
+    $(byline).find('a').remove();
 
-        $(byline).find('a').remove();
+    if ($(self).closest('.HLLandingControl').hasClass('HLRecentBlogs')) {
+        $(byline).text('');
+    } else {
+
         var bylineText = $(byline).text();
         bylineText = $.trim(bylineText);
         bylineText = bylineText.substring(2);
         $(byline).text(bylineText);
 
-        $(byline).prepend(bylineLink);
+    }
+    $(byline).prepend(bylineLink);
+}
+
+function handleCalloutCards() {
+    $('.callout-card .HLLandingControl ul li, .HLLandingControl ul li.callout-card').each(function () {
+        var self = $(this);
+
+        handleByLineAndPicture(self);
+
     });
 }
 
 function handleTags() {
     $('.tag-button').wrapAll('<div class="tag-buttons" />');
+}
+
+function handleBlogs() {
+    $('.home .HLRecentBlogs ul li').each(function () {
+        var self = $(this);
+
+
+        // handle byline and profile image
+        handleByLineAndPicture(self);
+
+        // handle blog image
+        handleAjaxCall(self);
+    });
 }
 
 $(function () {
@@ -104,7 +132,9 @@ $(function () {
     handleAppendMe();
     handleTestimonials();
     handleLandingControls();
+    handleUnansweredQuestions();
     handlePoll();
-    handleGreyCallout();
+    handleCalloutCards();
     handleTags();
+    handleBlogs();
 });
