@@ -367,12 +367,12 @@ a[id*="Welcome_Details_ProfileLink"] {
     padding-top: 110px;
     padding-bottom: 110px;
 }
+.padding-bottom-110.row > div[class*="col-md-"]:not(:empty) {
+    padding-bottom: 110px;
+}
 .padding-75.row > div[class*="col-md-"]:not(:empty) {
     padding-top: 75px;
     padding-bottom: 75px;
-}
-.margin-top-150 {
-    margin-top: 150px;
 }
 @media (max-width: 991px) {
     .padding-110.row > div[class*="col-md-"]:not(:empty),
@@ -392,7 +392,8 @@ a[id*="Welcome_Details_ProfileLink"] {
         padding-top: 45px;
     }
     .padding-110.row > div[class*="col-md-"]:not(:empty):last-child,
-    .padding-75.row > div[class*="col-md-"]:not(:empty):last-child {
+    .padding-75.row > div[class*="col-md-"]:not(:empty):last-child,
+    .padding-bottom-110.row > div[class*="col-md-"]:not(:empty) {
         padding-bottom: 45px;
     }
 }
@@ -1339,19 +1340,32 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 
 /****** homepage blogs ******/
+.homepage-blogs {
+    margin-bottom: -110px;
+}
+.padding-spacer {
+    padding-top: 155px;
+}
 .home .HLRecentBlogs {
     padding-top: 40px;
+}
+.home .HLLandingControl.HLRecentBlogs h2 {
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 .home .HLRecentBlogs ul {
     display: flex;
     margin-left: -25px;
     margin-right: -25px;
+    padding-bottom: 35px;
 }
 .home .HLRecentBlogs ul li {
     flex-basis: calc(50% - 50px);
     margin: 0 25px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 0 15px rgba(0,0,0,0.08);
-    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
 }
 .home .HLRecentBlogs ul li .img-container {
     height: 200px;
@@ -1361,9 +1375,81 @@ a[id*="Welcome_Details_ProfileLink"] {
     border-top-right-radius: 5px;
 }
 .home .HLRecentBlogs ul li .text-container {
-    padding: 25px 35px;
+    padding: 55px 35px 85px 35px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    background: #fff;
+    position: relative;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% - 200px);
+}
+.home .HLRecentBlogs.HLLandingControl ul li .title-row .col-md-10.col-sm-10 {
+    width: 100%;
+}
+.home .HLRecentBlogs ul li .text-container > .content-row > .col-md-12 {
+    position: static;
+}
+.home .HLRecentBlogs ul li .blogs-posted-in {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+}
+.home .HLRecentBlogs ul li .blogs-posted-in a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #15A0BA;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+}
+.home .HLRecentBlogs ul li h3 a {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.6;
+}
+.home .HLRecentBlogs ul li a[id*="BlogList_More"] {
+    position: absolute;
+    bottom: 25px;
+    right: 30px;
+    display: block;
+    background: #AC121B;
+    border-radius: 5px;
+    padding: 15px 35px;
+    color: #fff;
+    text-decoration: none;
+}
+.home .HLRecentBlogs ul li .profile-picture-byline {
+    background: #F4F2EF;
+    border-radius: 100px;
+    padding: 9px 18px 9px 9px;
+    line-height: 40px;
+    margin-top: 25px;
+    position: absolute;
+    left: 35px;
+    bottom: 25px;
+    max-width: calc(100% - 235px);
+    display: flex;
+    align-items: center;
+}
+.home .HLRecentBlogs ul li .profile-picture-byline .col-md-2 {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    float: left;
+}
+.home .HLRecentBlogs ul li .profile-picture-byline a[id*="ProfileImage"] {
+    width: 40px;
+    height: 40px;
+}
+.home .HLRecentBlogs ul li .profile-picture-byline .ByLine {
+    font-size: 18px;
+    line-height: 1.22;
+    padding-top: 0;
+}
+.home .HLRecentBlogs ul li .profile-picture-byline .ByLine a {
+    text-decoration: none;
 }
 
 /****** CTA icon sections ******/
@@ -1521,10 +1607,11 @@ a[id*="Welcome_Details_ProfileLink"] {
 .card h5 {
     background: #F4F2EF;
     border-radius: 100px;
-    display: inline-block;
     padding: 9px 18px 9px 9px;
-    line-height: 40px;
     margin-top: 25px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0;
 }
 .card h5 > strong {
     width: 40px;
@@ -1708,6 +1795,15 @@ a[id*="Welcome_Details_ProfileLink"] {
     .col-md-4:first-child > .icon-cta {
         padding-top: 40px;
     }
+    .home .HLRecentBlogs ul {
+        flex-wrap: wrap;
+    }
+    .home .HLRecentBlogs ul li {
+        flex-basis: 100%;
+    }
+    .home .HLRecentBlogs ul li:first-child {
+        margin-bottom: 30px;
+    }
 
     /*** nav ***/
     #NAV {
@@ -1775,6 +1871,11 @@ a[id*="Welcome_Details_ProfileLink"] {
         padding: 5px 15px 5px 25px;
     }
 }
+@media (max-width: 768px) {
+    .clip-me-shield {
+        top: -110px;
+    }
+}
 @media (max-width: 650px) {
     .clip-me-shield {
         right: auto;
@@ -1802,6 +1903,28 @@ a[id*="Welcome_Details_ProfileLink"] {
     .hero-login .panel-body .form-group .col-md-5,
     .hero-login .panel-body .form-group .col-md-7 {
         flex-basis: 100%;
+    }
+}
+@media (max-width: 550px) {
+    .home .HLRecentBlogs ul li .text-container {
+        padding-bottom: 155px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .home .HLRecentBlogs ul li h3 a {
+        font-size: 21px;
+    }
+    .home .HLRecentBlogs ul li .profile-picture-byline {
+        bottom: 90px;
+        max-width: 100%;
+        left: 15px;
+    }
+    .home .HLRecentBlogs ul li .blogs-posted-in {
+        left: 15px;
+    }
+    .home .HLRecentBlogs ul li a[id*="BlogList_More"] {
+        left: 15px;
+        right: auto;
     }
 }
 @media (max-width: 475px) {

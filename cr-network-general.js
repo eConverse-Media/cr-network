@@ -121,6 +121,13 @@ function handleBlogs() {
 
         // handle blog image
         handleAjaxCall(self);
+
+        // handle posted in
+        var postedIn = $(self).find('h5'),
+            communityName = $(postedIn).find('a');
+
+        $(postedIn).html(communityName);
+        $(postedIn).addClass('blogs-posted-in');
     });
 }
 
