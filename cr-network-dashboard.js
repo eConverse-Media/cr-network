@@ -9,6 +9,7 @@ $(function () {
         
     // create the first row
     $('.member-dashboard-img').wrap('<div class="user-details" />')
+    $('.member-dashboard-img').prepend('<a class="settings-button" href="preferences"><i class="cr cr-settings"></i></a>');
     $('.user-details').wrap('<div class="dashboard-row-1" />');
     $('.user-details').append(greeting);
     $('.greeting').append(emailContent);
