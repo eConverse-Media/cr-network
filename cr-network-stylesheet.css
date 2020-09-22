@@ -1178,7 +1178,8 @@ a[id*="Welcome_Details_ProfileLink"] {
     content: '\f013';
     position: absolute;
     left: 25px;
-    top: 25px;
+    top: 50%;
+    transform: translateY(-50%);
     font-weight: 400;
 }
 .active-groups div[id*="pnlAttributes"] .pull-right {
