@@ -131,6 +131,14 @@ h2, .h2 {
     margin-right: 15px;
     color: #ac121b;
 }
+.bg-dark-grey.small-h2 h2,
+.bg-dark-grey .small-h2 h2 {
+    color: #fff;
+}
+.bg-dark-grey.small-h2 h2::before,
+.bg-dark-grey .small-h2 h2::before {
+    color: #15A0BA;
+}
 
 .HLLandingControl h2, .HLLandingControl .heading h2 {
     padding-left: 0;
@@ -457,6 +465,10 @@ a[id*="Welcome_Details_ProfileLink"] {
     background-color: #FAF8F7;
     position: relative;
 }
+.bg-dark-grey {
+    position: static;
+    background-color: #333A3E;
+}
 .bg-grey.has-waves,
 .bg-grey.has-waves-white {
     background-repeat: no-repeat;
@@ -710,14 +722,19 @@ a[id*="Welcome_Details_ProfileLink"] {
     bottom: 0;
     height: 20px;
     z-index: 20;
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/slim-white-wave.png');
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-wave-repeatable.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    /* background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/slim-white-wave.png');
     background-size: 100% auto;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     background-position: bottom center;
 }
 .open.member-dashboard::after {
     height: 60px;
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-waves-header.png');
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-wave-repeatable.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
 }
 
 .member-dashboard>.row.row-wide {
@@ -765,7 +782,10 @@ a[id*="Welcome_Details_ProfileLink"] {
 .dashboard-toggle button::after {
     font-family: CRNetwork;
     margin-left: 12px;
-    content: '';
+    content: '\f014';
+}
+.open .dashboard-toggle button::after {
+    content: '\f015';
 }
 
 /*** top row ***/
@@ -1199,6 +1219,179 @@ a[id*="Welcome_Details_ProfileLink"] {
     float: left;
     margin-right: 3px;
     top: unset;
+}
+
+/****** your networks ******/
+.networks-home .badge {
+    display: none;
+}
+.networks-home .Content div[id*="UpdatePanel1"] {
+    display: flex;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.networks-home .Content div[id*="UpdatePanel1"] > .row:not(.hero-widget-row) {
+    display: none;
+}
+.networks-home .hero-widget-row:nth-child(3)::before,
+.networks-home .hero-widget-row:nth-child(7)::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    height: 330px;
+    width: 330px;
+    display: block;
+    background: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/large-star2.png');
+    background-size: cover;
+    background-position: center;
+}
+.hero-widget-row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.hero-widget-row  .col-md-3 {
+    background: #F4F2EF;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 15px rgba(0, 0, 0, 0.08);
+    width: 270px;
+    height: 270px;
+    text-align: center;
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-widget-row:nth-child(5),
+.hero-widget-row:nth-child(7) {
+    margin-top: 40px;
+}
+.hero-widget-row .col-md-3,
+.hero-widget-row .col-md-3:hover,
+.hero-widget-row .col-md-3:focus {
+    transition: .3s;
+}
+.hero-widget-row .col-md-3:hover,
+.hero-widget-row .col-md-3:focus {
+    transform: scale(1.1);
+}
+.networks-home .hero-widget {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+.hero-widget-row h4 {
+    color: #AC121B;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.hero-widget-row h4::before {
+    font-family: CRNetwork;
+    font-size: 48px;
+    line-height: 1;
+    display: block;
+    margin-bottom: 12px;
+    content: '\f016';
+}
+.hero-widget-row h5 a {
+    text-decoration: none;
+    color: #052B3E;
+    font-size: 21px;
+    font-weight: 700;
+}
+.hero-widget-row .options > a {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #AC121B;
+    border: none;
+    padding: 15px 15px 35px 15px;
+    color: #fff;
+    font-size: 24px;
+}
+
+/****** suggested contacts ******/
+
+.home .HL-contact-suggestions .Content {
+    margin-left: -15px;
+    margin-right: -15px;
+    display: flex;
+}
+.home .HL-contact-suggestions .Content > .row {
+    margin-left: 15px;
+    margin-right: 15px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(33.3333333% - 30px);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+}
+.home .HL-contact-suggestions .Content > .row > .col-md-12 {
+    padding: 0
+}
+.home .HL-contact-suggestions .Content ul {
+    padding-top: 0;
+}
+.home .HL-contact-suggestions .Content ul li {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.home .HL-contact-suggestions .Content ul li .details span:first-child,
+.home .HL-contact-suggestions .Content ul li .details br {
+    display: none;
+}
+.home .HL-contact-suggestions .Content > .row > .col-md-12 > ul > li > .title-row {
+    display: flex;
+}
+.home .HL-contact-suggestions .Content > .row > .col-md-12 > ul > li > .title-row > .col-md-2.col-sm-2.col-xs-4 {
+    width: 50px;
+    padding: 0;
+    margin-right: 0;
+}
+.home .HL-contact-suggestions .Content > .row > .col-md-12 > ul > li > .title-row > .col-md-6.col-sm-6.col-xs-8 {
+    width: calc(100% - 115px);
+    padding-left: 30px;
+}
+.home .HL-contact-suggestions .Content > .row > .col-md-12 > ul > li > .title-row > .col-md-4.col-sm-4.col-xs-12 {
+    width: 65px;
+    padding: 0;
+}
+.home .HL-contact-suggestions .Content > .row > .col-md-12 ul li a[oldtitle="User Name Image"] {
+    width: 50px;
+    height: 50px;
+}
+.home .HL-contact-suggestions .Content > .row h3 a,
+.home .HL-contact-suggestions .Content > .row .details span {
+    color: #fff;
+}
+.home .HL-contact-suggestions .Content > .row .details span {
+    font-size: 14px;
+    line-height: 17px;
+}
+.home .HL-contact-suggestions .Content .update-friend .btn {
+    font-size: 14px;
+    line-height: 17px;
+    padding: 7px 12px;
+    text-align: center;
+    width: 65px;
+}
+.home .HL-contact-suggestions .Content .update-friend .btn-primary {
+    background: #15A0BA;
+    border: none;
+    margin-bottom: 15px;
+}
+.home .HL-contact-suggestions .Content .update-friend .btn-default {
+    background: #E3DDD6;
+    color: #052B3E;
+    border: none;
+    margin-top: 0;
 }
 
 /****** call out cards ******/
@@ -2264,7 +2457,8 @@ a[id*="Welcome_Details_ProfileLink"] {
 
 @media (max-width: 1230px) {
     .hero,
-    .bg-grey.row-full.inner-row-wide > .col-md-12 {
+    .bg-grey.row-full.inner-row-wide > .col-md-12,
+    .bg-dark-grey.row-full.inner-row-wide > .col-md-12 {
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -2273,6 +2467,10 @@ a[id*="Welcome_Details_ProfileLink"] {
 @media (max-width: 1200px) {
     #Logo>.col-md-12, #MPheader>.row:first-child>.col-md-12 {
         padding: 0;
+    }
+    .bg-dark-grey.row-full.inner-row-wide > .col-md-12 > .networks-home > .row {
+        margin-left: -15px;
+        margin-right: -15px;
     }
 }
 
@@ -2325,6 +2523,21 @@ a[id*="Welcome_Details_ProfileLink"] {
     .active-groups div[id*="UpdatePanel1"] .community-list {
         margin: 15px 0;
         flex-basis: 100%;
+    }
+    .home .HL-contact-suggestions .Content {
+        flex-wrap: wrap;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .home .HL-contact-suggestions .Content > .row {
+        margin-left: auto;
+        margin-right: auto;
+        flex-basis: 100%;
+        max-width: 750px;
+        margin-bottom: 20px;
+    }
+    .home .HL-contact-suggestions .Content > .row:last-child {
+        margin-bottom: 0;
     }
 
     /*** nav ***/

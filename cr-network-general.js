@@ -131,6 +131,22 @@ function handleBlogs() {
     });
 }
 
+function handleNetworks() {
+    $('.networks-home .hero-widget').closest('.row').addClass('hero-widget-row');
+
+    $('.networks-home h4').each(function () {
+        var self = $(this),
+            parentRow = $(self).closest('.row'),
+            contentRow = $(parentRow).find('+ .row');
+
+            $(self).prependTo($(contentRow).find('.hero-widget'));
+    });
+}
+
+function handleSuggestedContacts() {
+    $('.home .HL-contact-suggestions .update-friend .btn-primary').text('Add');
+}
+
 $(function () {
     // handle search
     $('.search-bar-top').insertAfter('#MPheader > .row:first-child > .col-md-12:first-child > .pull-right:first-child');
@@ -144,4 +160,6 @@ $(function () {
     handleCalloutCards();
     handleTags();
     handleBlogs();
+    handleNetworks();
+    handleSuggestedContacts();
 });
