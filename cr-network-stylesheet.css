@@ -312,6 +312,10 @@ a[id*="Welcome_Details_ProfileLink"] {
     background: #AC121B;
     border-radius: 5px;
 }
+.make-buttons em a:hover,
+.make-buttons em a:focus {
+    background: #052B3E;
+}
 /*** button margin ***/
 .make-buttons.button-margin em a {
     margin-top: 40px;
@@ -368,6 +372,21 @@ a[id*="Welcome_Details_ProfileLink"] {
     color: #fff;
     background: #AC121B;
     border-color: #AC121B;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.ideation-home .btn-success:hover,
+.ideation-home .btn-success:focus,
+.community-radio .btn-group .btn-primary.dropdown-toggle:hover,
+.community-radio .btn-group .btn-primary.dropdown-toggle:focus,
+.open .dropdown-toggle.btn-primary:hover,
+.open .dropdown-toggle.btn-primary:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:hover,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:focus, 
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:focus {
+    background: #052B3E;
+    border-color: #052B3E;
 }
 
 /****** margins between sections ******/
@@ -671,6 +690,13 @@ a[id*="Welcome_Details_ProfileLink"] {
     line-height: 1.2;
     padding: 20px;
 }
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.disabled>a:hover, .navbar-default .navbar-nav>.disabled>a:focus,
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    color: #AC121B;
+    background: #F5F2EF;
+}
 
 /* removing extraneous padding on desktop */
 
@@ -704,6 +730,32 @@ a[id*="Welcome_Details_ProfileLink"] {
 .navbar-nav>li>.dropdown-menu {
     right: 0;
     left: auto;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05), 0px 5px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 0px 0px 5px 5px;
+    background: #fff;
+    padding: 0;
+    border: 1px solid #F5F2EF;
+}
+.navbar-nav .dropdown-menu>li>a {
+    color: #052B3E;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 6px 24px;
+    background: #fff;
+    font-weight: 400;
+}
+.navbar-nav .dropdown-menu>li>a:hover,
+.navbar-nav .dropdown-menu>li>a:focus {
+    background: #F5F2EF;
+    color: #AC121B;
+    text-shadow: 0.2px 0.2px 0 #ac121b, -0.2px -0.2px 0 #ac121b;
+}
+.navbar-nav .dropdown-menu>.active>a,
+.navbar-nav .dropdown-menu>.active>a:hover,
+.navbar-nav .dropdown-menu>.active>a:focus {
+    color: #fff;
+    background: #ac121b;
+    text-shadow: 0.2px 0.2px 0 #fff, -0.2px -0.2px 0 #fff;
 }
 
 /****** member dashboard ******/
@@ -1242,7 +1294,7 @@ a[id*="Welcome_Details_ProfileLink"] {
     height: 330px;
     width: 330px;
     display: block;
-    background: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/large-star2.png');
+    background: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/faint-star-neworks.png');
     background-size: cover;
     background-position: center;
 }
@@ -1679,7 +1731,7 @@ a[id*="Welcome_Details_ProfileLink"] {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/rocket.png');
     background-repeat: no-repeat;
     background-position-x: center;
-    background-position-y: calc(100%  +75px);
+    background-position-y: calc(100% + 75px);
     position: relative;
     padding: 0 calc(50% - 600px);
     justify-content: space-between;
@@ -1782,6 +1834,10 @@ a[id*="Welcome_Details_ProfileLink"] {
 .hero-login div[id*="SignupLinkSection"] {
     text-align: right;
 }
+.hero-login div[id*="SignupLinkSection"] {
+    position: relative;
+    z-index: 0;
+}
 .hero-login a[id*="ForgotPassword"] {
     font-weight: 700;
     font-size: 14px;
@@ -1824,6 +1880,8 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 .hero-login .remember-me + .row {
     float: left;
+    position: relative;
+    z-index: 10;
 }
 
 /****** logo background section ******/
@@ -1835,40 +1893,40 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 
 /****** stars on landing controls ******/
-.add-stars > .col-md-8::before,
-.add-stars > .col-md-8::after {
+.add-stars > .col-md-8:not(:empty)::before,
+.add-stars > .col-md-8:not(:empty)::after {
     content: '';
     position: absolute;
     transform: translate(-100%, -50%);
 }
-.add-stars > .col-md-8::before {
+.add-stars > .col-md-8:not(:empty)::before {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/small-star1.png');
     width: 61px;
     height: 66px;
     left: -50px;
     top: 50%;
 }
-.add-stars > .col-md-8::after {
+.add-stars > .col-md-8:not(:empty)::after {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/large-star1.png');
     width: 114px;
     height: 122px;
     left: 0;
     top: 75%;
 }
-.add-stars > .col-md-4::before,
-.add-stars > .col-md-4::after {
+.add-stars > .col-md-4:not(:empty)::before,
+.add-stars > .col-md-4:not(:empty)::after {
     content: '';
     position: absolute;
     transform: translate(100%, -50%);
 }
-.add-stars > .col-md-4::before {
+.add-stars > .col-md-4:not(:empty)::before {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/small-star2.png');
     width: 53px;
     height: 58px;
     right: -50px;
     top: 55%;
 }
-.add-stars > .col-md-4::after {
+.add-stars > .col-md-4:not(:empty)::after {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/large-star2.png');
     width: 116px;
     height: 125px;
@@ -2048,9 +2106,13 @@ a[id*="Welcome_Details_ProfileLink"] {
 /****** homepage blogs ******/
 .homepage-blogs {
     margin-bottom: -110px;
+    position: relative;
+    z-index: 10;
 }
 .padding-spacer {
     padding-top: 155px;
+    position: relative;
+    z-index: -10;
 }
 .home .HLRecentBlogs {
     padding-top: 40px;
@@ -2125,6 +2187,10 @@ a[id*="Welcome_Details_ProfileLink"] {
     padding: 15px 35px;
     color: #fff;
     text-decoration: none;
+}
+.home .HLRecentBlogs ul li a[id*="BlogList_More"]:hover,
+.home .HLRecentBlogs ul li a[id*="BlogList_More"]:focus {
+    background: #052B3E;
 }
 .home .HLRecentBlogs ul li .profile-picture-byline {
     background: #F4F2EF;
@@ -2471,6 +2537,9 @@ a[id*="Welcome_Details_ProfileLink"] {
     .bg-dark-grey.row-full.inner-row-wide > .col-md-12 > .networks-home > .row {
         margin-left: -15px;
         margin-right: -15px;
+    }
+    .navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.disabled>a {
+        font-size: 17px;
     }
 }
 
