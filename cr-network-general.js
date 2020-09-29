@@ -107,6 +107,13 @@ function handleCalloutCards() {
     });
 }
 
+function handleRelatedContent() {
+    $('.related-content .HLLandingControl .Content ul li').each(function () {
+        var self = $(this);
+        handleByLineAndPicture(self);
+    });
+}
+
 function handleTags() {
     $('.tag-button').wrapAll('<div class="tag-buttons" />');
 }
@@ -147,6 +154,12 @@ function handleSuggestedContacts() {
     $('.home .HL-contact-suggestions .update-friend .btn-primary').text('Add');
 }
 
+function handlePageTitle() {
+    if ($('#MainCopy_ContentWrapper').hasClass('no-margin')) {
+        $('#PageTitleH1').addClass('grey-border');
+    }
+}
+
 $(function () {
     // handle search
     $('.search-bar-top').insertAfter('#MPheader > .row:first-child > .col-md-12:first-child > .pull-right:first-child');
@@ -158,8 +171,10 @@ $(function () {
     handleUnansweredQuestions();
     handlePoll();
     handleCalloutCards();
+    handleRelatedContent();
     handleTags();
     handleBlogs();
     handleNetworks();
     handleSuggestedContacts();
+    handlePageTitle();
 });

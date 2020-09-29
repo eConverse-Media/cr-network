@@ -115,7 +115,8 @@ h2, .h2,
     margin-bottom: 25px;
     display: inline-block;
 }
-.interior .no-underline-h3 h3 {
+.interior .no-underline-h3 h3,
+.interior .HLLandingControl h3 {
     border-bottom: none;
 }
 .callout-card h3 {
@@ -437,6 +438,9 @@ a[id*="Welcome_Details_ProfileLink"] {
     .padding-110.row > div[class*="col-md-"]:not(:empty):last-child {
         padding-bottom: 110px;
     }
+    .margin-bottom-mob {
+        margin-bottom: 40px;
+    }
 }
 @media (max-width: 768px) {
     .padding-110.row > div[class*="col-md-"]:not(:empty),
@@ -465,6 +469,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 .margin-bottom-60 {
     margin-bottom: 60px;
 }
+.margin-top-60 {
+    margin-top: 60px;
+}
 .margin-bottom-45 {
     margin-bottom: 45px;
 }
@@ -473,6 +480,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 .home div[class*="section"] {
     min-height: 0;
+}
+.interior #MainCopy_ContentWrapper:not(.no-margin) {
+    margin-top: 50px;
 }
 
 /****** re-setting padding on heading rows ******/
@@ -515,15 +525,26 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 .bg-grey.has-waves,
 .bg-grey.has-waves-white {
-    background-repeat: no-repeat;
+    position: relative;
+}
+.bg-grey.has-waves::before,
+.bg-grey.has-waves-white::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
     background-position: center bottom;
-    background-size: 100% auto;
 }
-.bg-grey.has-waves {
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/waves-grey.png');
+.bg-grey.has-waves::before {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard-grey.svg');
 }
-.bg-grey.has-waves-white {
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-waves-general.png');
+.bg-grey.has-waves-white::before {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard.svg');
+    
 }
 .bg-grey.has-star > div[class*="section"]:last-child:not(:empty)::after,
 .bg-grey.has-star > .row:first-child > div[class*="section"]:last-child:not(:empty)::after {
@@ -624,7 +645,32 @@ blockquote h4::before {
     border-radius: 5px;
 }
 
-/*** grey anchored section ***/
+/*** interior page titles ***/
+#PageTitleH1 {
+    max-width: 100%;
+    padding: 55px calc(50% - 585px) 75px calc(50% - 585px);
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/dashboard-bg-blue.png');
+    position: relative;
+}
+#PageTitleH1::after {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard.svg');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 35px;
+}
+#PageTitleH1.grey-border::after {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard-grey.svg');
+}
+
+/*** grey anchored section + resource bundle header ***/
 .anchored-section {
     padding-top: 110px;
     padding-bottom: 150px;
@@ -632,17 +678,31 @@ blockquote h4::before {
     align-items: center;
     margin-top: 90px;
 }
-.anchored-section.bg-grey > div[class*='col-md-'] {
+.resource-bundle-header.bg-grey {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    background-color: #EBE8E2;
+}
+.anchored-section.bg-grey > div[class*='col-md-'],
+.resource-bundle-header.bg-grey > div[class*='col-md-'] {
     padding-left: 30px;
     padding-right: 30px;
 }
-.anchored-section.bg-grey > div[class*='col-md-']:first-child {
+.anchored-section.bg-grey > div[class*='col-md-']:first-child,
+.resource-bundle-header.bg-grey > div[class*='col-md-']:first-child {
     padding-left: 15px;
 }
-.anchored-section.bg-grey > div[class*='col-md-']:last-child {
+.anchored-section.bg-grey > div[class*='col-md-']:last-child,
+.resource-bundle-header.bg-grey > div[class*='col-md-']:last-child {
     padding-right: 15px;
 }
-.anchored-section.bg-grey > div[class*='col-md-']:first-child::before {
+.resource-bundle-header.bg-grey > div[class*='col-md-']:last-child {
+    padding-left: 60px;
+}
+.anchored-section.bg-grey > div[class*='col-md-']:first-child::before,
+.resource-bundle-header.bg-grey > div[class*='col-md-']:first-child::before {
     content: '';
     width: 61px;
     height: 66px;
@@ -653,7 +713,12 @@ blockquote h4::before {
     background-position: center;
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/small-star1.png');
 }
-.anchored-section.bg-grey > div[class*='col-md-']:last-child::before {
+.resource-bundle-header.bg-grey > div[class*='col-md-']:first-child::before {
+    top: 0;
+    left: -65px;
+}
+.anchored-section.bg-grey > div[class*='col-md-']:last-child::before,
+.resource-bundle-header.bg-grey > div[class*='col-md-']:last-child::before {
     content: '';
     width: 53px;
     height: 58px;
@@ -664,7 +729,8 @@ blockquote h4::before {
     background-position: center;
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/small-star2.png');
 }
-.anchored-section.bg-grey > div[class*='col-md-']:last-child::after {
+.anchored-section.bg-grey > div[class*='col-md-']:last-child::after,
+.resource-bundle-header.bg-grey > div[class*='col-md-']:last-child::after {
     content: '';
     position: absolute;
     bottom: -60px;
@@ -675,11 +741,16 @@ blockquote h4::before {
     background-position: center;
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/icons/large-star1.png');
 }
-.anchored-section h3 {
+.resource-bundle-header.bg-grey > div[class*='col-md-']:last-child::after {
+    bottom: 0;
+}
+.anchored-section h3,
+.resource-bundle-header h3 {
     margin-bottom: 10px;
     margin-top: 0;
 }
-.anchored-section p:last-of-type {
+.anchored-section p:last-of-type,
+.resource-bundle-header p:last-of-type {
     margin-bottom: 40px;
 }
 .anchored-section.has-rocket {
@@ -700,27 +771,47 @@ blockquote h4::before {
     background-repeat: no-repeat;
 }
 
-/*** interior page titles ***/
-#PageTitleH1 {
-    max-width: 100%;
-    padding: 55px calc(50% - 585px) 75px calc(50% - 585px);
-    color: #fff;
-    background-size: cover;
-    background-position: center;
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/dashboard-bg-blue.png');
-    position: relative;
-    margin-bottom: 50px !important;
+/****** resource bundle page ******/
+@media (min-width: 992px) {
+    .negative-margin-resource-bundle {
+        margin-top: -50px;
+    }
 }
-#PageTitleH1::after {
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-wave-repeatable.png');
-    background-repeat: repeat-x;
-    background-size: auto 100%;
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 20px;
+
+/*** related community content ***/
+.related-content {
+    padding: 25px;
+    border-radius: 5px;
+}
+.related-content .HLLandingControl h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.related-content .HLLandingControl h3 {
+    margin-bottom: 0;
+    padding-bottom: 15px;
+}
+.related-content .HLLandingControl .Content ul li {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px 30px 50px 30px;
+    position: relative;
+}
+.related-content .HLLandingControl .Content ul li:not(:last-child) {
+    margin-bottom: 35px;
+}
+.related-content .HLLandingControl .Content ul li:last-child {
+    margin-bottom: 20px;
+}
+
+/*** rocket at bottom ***/
+#MainCopy_ContentWrapper.has-rocket {
+    padding-bottom: 160px;
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/rocket.png');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% + 150px);
+    background-position-y: calc(100% + 100px);
 }
 
 /****** header ******/
@@ -968,19 +1059,15 @@ blockquote h4::before {
     bottom: 0;
     height: 20px;
     z-index: 20;
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-wave-repeatable.png');
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard.svg');
     background-repeat: repeat-x;
     background-size: auto 100%;
-    /* background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/slim-white-wave.png');
-    background-size: 100% auto;
-    background-repeat: no-repeat; */
     background-position: bottom center;
+    transition: height .3s;
 }
 .open.member-dashboard::after {
     height: 60px;
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/white-wave-repeatable.png');
-    background-repeat: repeat-x;
-    background-size: auto 100%;
+    transition: height .3s;
 }
 
 .member-dashboard>.row.row-wide {
@@ -1680,6 +1767,9 @@ blockquote h4::before {
 .callout-card .HtmlContent p {
     margin-bottom: 15px;
 }
+.callout-card p > a {
+    text-decoration: none;
+}
 .callout-card h5 {
     margin-top: 0;
 }
@@ -1758,6 +1848,7 @@ blockquote h4::before {
     margin-bottom: 0;
 }
 .callout-card .HLLandingControl ul li .title-row .col-sm-10.col-md-10,
+.related-content .HLLandingControl ul li .title-row .col-sm-7.col-md-7,
 .HLLandingControl .callout-card .title-row .col-sm-10.col-md-10 {
     width: 100%;
 }
@@ -1772,7 +1863,9 @@ blockquote h4::before {
     align-items: center;
 }
 .callout-card .HLLandingControl ul li .profile-picture-byline .col-md-2,
-.callout-card .HLLandingControl ul li .ByLine {
+.callout-card .HLLandingControl ul li .ByLine,
+.related-content .HLLandingControl ul li .profile-picture-byline .col-md-2,
+.related-content .HLLandingControl ul li .ByLine {
     float: none;
 }
 .callout-card .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"],
@@ -1781,12 +1874,14 @@ blockquote h4::before {
     height: 35px;
 }
 .callout-card .HLLandingControl ul li .ByLine,
+.related-content .HLLandingControl ul li .ByLine,
 .HLLandingControl .callout-card .ByLine {
     padding-left: 20px;
     padding-top: 0;
     letter-spacing: 0.04em;
 }
 .callout-card .HLLandingControl ul li .ByLine a,
+.related-content .HLLandingControl ul li .ByLine a,
 .HLLandingControl .callout-card .ByLine a {
     display: block;
     font-weight: 700;
@@ -1839,21 +1934,25 @@ blockquote h4::before {
 .unanswered-questions .HLLandingControl ul li.callout-card:last-child {
     margin-bottom: 0;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline {
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline,
+.related-content .HLLandingControl ul li .profile-picture-byline {
     padding-left: 55px;
     position: absolute;
     bottom: 10px;
     left: 30px;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline .col-md-2 {
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline .col-md-2,
+.related-content .HLLandingControl ul li .profile-picture-byline .col-md-2 {
     position: absolute;
     top: 0;
     left: 0;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"] {
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"],
+.related-content .HLLandingControl ul li .profile-picture-byline a[id*="imgProfPic"] {
     border: 5px solid #fff;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"] img {
+.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"] img,
+.related-content .HLLandingControl ul li .profile-picture-byline a[id*="imgProfPic"] img {
     width: 55px !important;
     height: 55px !important;
 }
@@ -2820,17 +2919,22 @@ blockquote h4::before {
     .home .HL-contact-suggestions .Content > .row:last-child {
         margin-bottom: 0;
     }
-    .anchored-section {
+    .anchored-section,
+    .resource-bundle-header.bg-grey {
         flex-wrap: wrap;
     }
-    .anchored-section > div[class*="col-md-"] {
+    .anchored-section > div[class*="col-md-"],
+    .resource-bundle-header.bg-grey > div[class*="col-md-"],
+    .resource-bundle-header.bg-grey > div[class*="col-md-"]:last-child {
         padding-left: 15px;
         padding-right: 15px;
         padding-bottom: 30px;
     }
-    .anchored-section > div[class*="col-md-"]:last-child {
+    .anchored-section > div[class*="col-md-"]:last-child,
+    .resource-bundle-header.bg-grey > div[class*="col-md-"]:last-child {
         padding-bottom: 0;
     }
+
 
     /*** nav ***/
     #NAV {
