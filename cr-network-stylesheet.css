@@ -116,7 +116,8 @@ h2, .h2,
     display: inline-block;
 }
 .interior .no-underline-h3 h3,
-.interior .HLLandingControl h3 {
+.interior .HLLandingControl h3,
+.interior .ContentUserControl h3 {
     border-bottom: none;
 }
 .callout-card h3 {
@@ -812,6 +813,342 @@ blockquote h4::before {
     background-repeat: no-repeat;
     background-position-x: calc(100% + 150px);
     background-position-y: calc(100% + 100px);
+}
+
+/***** filtered libraries ******/
+.filtered-library-wrapper > .col-md-12 {
+    min-height: 100px;
+}
+.grid .library-list {
+    width: calc(33.333333333333% - 30px);
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 15px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    margin: 15px;
+    word-wrap: break-word;
+    height: 590px; 
+    overflow: hidden;
+}
+
+.grid .library-list .img-container {
+    height: 215px;
+    margin: -15px;
+    margin-bottom: 25px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.grid .library-list .img-container.no-img::before {
+    font-family: CRNetwork;
+    content: '\f018';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    font-size: 42px;
+    line-height: 1;
+    color: #fff;
+    opacity: 1;
+}
+.grid .library-list:nth-child(even) .img-container.no-img {
+    background: linear-gradient(98.75deg, #1C2225 -1.08%, #AC121B 137.68%), #052B3E;
+}
+.grid .library-list:nth-child(odd) .img-container.no-img {
+    background: linear-gradient(104.11deg, #052B3E 1.69%, #15A0BA 127.35%);
+}
+
+.grid .library-list>div[id*="NameBlock"] {
+    height: 100%;
+    padding: 0 25px 30px 25px;
+}
+.grid .library-list h3 a {
+    color: #052B3E;
+    font-weight: 500;
+}
+
+.grid div[id*="ItemRating"], .grid .library-list>div[id*="NameBlock"] > div:nth-of-type(4) img, .grid .library-list>div[id*="NameBlock"] > div:nth-of-type(4) iframe,
+.grid .library-list .libListReptEntAttchLble,
+.grid .library-list .listIconContainer {
+    display: none;
+}
+
+.grid div[id*="NameBlock"] > div:nth-child(4) > .margin-bottom-medium {
+    height: 95px;
+    overflow: hidden;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.3333333;
+}
+
+ .grid .library-list .tags-container {
+     display: none;
+ }
+
+.grid {
+    background: #fff;
+    position: relative;
+}
+.grid > div > .row.no-margin {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.grid > div > .row.no-margin > .col-md-12 {
+    padding: 0;
+}
+
+.grid .Content>.row,
+.grid ul.pagination {
+    display: none;
+}
+
+/* download buttons */
+
+.grid .library-list .listIconContainer + .pull-right {
+    float: left !important;
+}
+.grid .library-list .listIconContainer + .pull-right .btn {
+    color: #fff;
+    background: #AC121B;
+    border: none;
+    padding: 15px 40px;
+}
+.grid .library-list .listIconContainer + .pull-right .btn:hover,
+.grid .library-list .listIconContainer + .pull-right .btn:focus {
+    background: #052B3E;
+}
+
+/* view link */
+
+.grid .library-list .view-link {
+    float: right;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+}
+.grid .library-list .view-link::after {
+    font-family: CRNetwork;
+    content: '\f019';
+    margin-left: 8px;
+}
+
+/* dropdowns */
+
+.grid div.dropdown-group {
+    width: 100%;
+    float: none;
+    padding: 0px;
+    position: relative;
+    z-index: 2;
+}
+
+.dropdown-group > .HtmlContent {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.dropdown-group > .HtmlContent > .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.filter-button-group {
+    position: relative;
+    flex-basis: calc(33.333333333333% - 30px);
+    margin: 15px;
+    margin-top: 0;
+}
+
+div.filter-button-group .filter-content {
+    width: 100%;
+    padding: 0;
+    position: relative;
+    top: 0;
+    background: #fff;
+}
+
+div.filter-button-group.open .filter-content {
+    display: block;
+}
+
+.filter-button-group ul.multiple-select {
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
+div.filter-button-group.open .filter-content ul.multiple-select {
+    display: block;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05), 0px 5px 20px rgba(0, 0, 0, 0.05);
+    background: #FAF8F7;
+    z-index: 5;
+}
+
+.filter-button-group ul.multiple-select li.checkbox-filter {
+    padding: 4px 10px;
+    position: relative;
+}
+
+div.filter-button-group .filter-label:after {
+    content: '\f001';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: CRNetwork;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+div.filter-button-group .filter-label {
+    padding: 15px 50px 15px 20px;
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    font-size: 18px;
+    line-height: 24px;
+    color: #AC121B;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #FAF8F7;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Customize the label (the container) */
+.filter-content .container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.filter-content .checkbox-filter input {
+    opacity: 0;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Create a custom checkbox */
+.filter-content .checkmark {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: #EBE8E2;
+    transition: background-color .3s;
+}
+
+/* On mouse-over, add a grey background color */
+.filter-content .checkbox-filter {
+    cursor: pointer;
+}
+.filter-content .checkbox-filter:hover .checkmark,
+.filter-content .checkbox-filter:focus .checkmark {
+    background-color: #d3d0cb;
+}
+
+/* When the checkbox is checked, add blue background */
+.filter-content .checkbox-filter.is-active .checkmark {
+    background-color: #AC121B;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.filter-content .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.filter-content .checkbox-filter.is-active .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.filter-content .checkbox-filter .checkmark:after {
+    left: 7px;
+    top: 2px;
+    width: 7px;
+    height: 13px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* no results message */
+.no-results {
+    position: absolute;
+    bottom: 0;
+}
+
+.filtered-library > .col-md-12 {
+    min-height: 300px;
+}
+
+.grid div[id*="DocumentPanel"]>.row.no-margin>.col-md-12 {
+    padding: 0;
+}
+
+.grid div[id*="ContentWrapper"]>.row.row-wide>.col-md-12 {
+    padding: 0;
+}
+
+.grid span[id*="ItemRating"] {
+    display: none;
+}
+
+/* Hiding the Byline */
+
+.grid .libListReptEntByline {
+    display: none;
+}
+
+.grid .library-list .attachment-wrap {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 15px;
+    background-color: white;
+}
+
+.grid .library-list .attachment-wrap::before {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    content: '';
+    width: 100%;
+    height: 15px;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), #fff);
+}
+
+/****** responsive ******/
+@media (max-width: 768px) {
+    .grid .library-list {
+        width: calc(50% - 30px);
+    }
+}
+@media (max-width: 500px) {
+    .grid .library-list {
+        width: calc(100% - 30px);
+    }
 }
 
 /****** header ******/
@@ -2852,6 +3189,11 @@ blockquote h4::before {
         padding-left: 15px;
         padding-right: 15px;
     }
+    .grid .library-list > div:first-child > .pull-right:first-child + div > .row,
+    .dropdown-group > .HtmlContent > .row {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -2933,6 +3275,12 @@ blockquote h4::before {
     .anchored-section > div[class*="col-md-"]:last-child,
     .resource-bundle-header.bg-grey > div[class*="col-md-"]:last-child {
         padding-bottom: 0;
+    }
+    .grid .library-list {
+        width: calc(50% - 30px);
+    }
+    div.filter-button-group {
+        flex-basis: calc(50% - 30px);
     }
 
 
@@ -3028,6 +3376,12 @@ blockquote h4::before {
         width: 280px;
         height: 375px;
         clip-path: url(#shield-clip-path-mob);
+    }
+    .grid .library-list {
+        width: calc(100% - 30px);
+    }
+    div.filter-button-group {
+        flex-basis: calc(100% - 30px);
     }
 }
 @media (max-width: 600px) {
