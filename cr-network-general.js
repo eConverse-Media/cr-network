@@ -73,12 +73,14 @@ function handlePoll() {
 }
 
 function handleByLineAndPicture(self) {
+
+
     var profilePicture = $(self).find('.title-row > .col-md-2'),
         byline = $(self).find('.ByLine');
 
-    $(profilePicture).wrap('<div class="profile-picture-byline" />');
+    $(byline).wrap('<div class="profile-picture-byline" />');
     var profilePictureContainer = $(self).find('.profile-picture-byline');
-    $(byline).appendTo(profilePictureContainer);
+    $(profilePicture).prependTo(profilePictureContainer);
     $(profilePictureContainer).appendTo(self);
 
     // handle comma in byline
@@ -88,10 +90,11 @@ function handleByLineAndPicture(self) {
     if ($(self).closest('.HLLandingControl').hasClass('HLRecentBlogs')) {
         $(byline).text('');
     } else {
-
         var bylineText = $(byline).text();
         bylineText = $.trim(bylineText);
-        bylineText = bylineText.substring(2);
+        var bylineStart = !!(bylineText.indexOf(',') > -1) ? bylineText.indexOf(',') : bylineText.indexOf(':');
+        bylineStart++;
+        bylineText = bylineText.substring(bylineStart);
         $(byline).text(bylineText);
 
     }
@@ -104,6 +107,23 @@ function handleCalloutCards() {
 
         handleByLineAndPicture(self);
 
+    });
+}
+
+function handleRedCard() {
+    $('.callout-card.red-card').each(function () {
+        var self = $(this),
+            link = $(self).find('a'),
+            target = $(link).attr('target'),
+            href = $(link).attr('href');
+
+        if (target == "_blank") {
+            $(self).wrap('<a class="card-wrapper" href="' + href + '" target="_blank" />');
+        } else {
+            $(self).wrap('<a class="card-wrapper" href="' + href + '" />');
+        }
+        $(link).wrapInner('<span class="link-text" />');
+        $(link).contents().unwrap();
     });
 }
 
@@ -139,6 +159,117 @@ function handleBlogs() {
 }
 
 function handleNetworks() {
+
+    function checkNetworksLength() {
+        function slickifySmall() {
+            $('.networks-slider').slick({
+                dots: true,
+                arrows: false,
+                slidesToShow: 1,
+                mobileFirst: true,
+                infinite: false,
+                responsive: [
+                    {
+                        breakpoint: 600,
+                        settings: 'unslick'
+                    }
+                ]
+            });
+        }
+
+        function slickifyMedium() {
+            $('.networks-slider').slick({
+                dots: true,
+                arrows: false,
+                slidesToShow: 1,
+                mobileFirst: true,
+                infinite: false,
+                responsive: [
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 900,
+                        settings: 'unslick'
+                    }
+                ]
+            });
+        }
+        function slickifyLarge() {
+            $('.networks-slider').slick({
+                dots: true,
+                arrows: false,
+                slidesToShow: 1,
+                mobileFirst: true,
+                infinite: false,
+                responsive: [
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 900,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1200,
+                        settings: 'unslick'
+                    }
+                ]
+            });
+        }
+
+        function slickifyDesktop() {
+            $('.networks-slider').slick({
+                dots: true,
+                arrows: false,
+                slidesToShow: 1,
+                mobileFirst: true,
+                infinite: false,
+                responsive: [
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 900,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
+        }
+        var width = $(window).width(),
+            networksLength = networks.length;
+
+        if (networksLength > 4) {
+            slickifyDesktop();
+        } else if (networksLength == 4 && width < 1200) {
+            slickifyLarge();
+        } else if (networksLength == 3 && width < 900) {
+            slickifyMedium();
+        } else if (networksLength == 2 && width < 600) {
+            slickifySmall();
+        }
+
+    }
+
     $('.networks-home .hero-widget').closest('.row').addClass('hero-widget-row');
 
     $('.networks-home h4').each(function () {
@@ -147,6 +278,16 @@ function handleNetworks() {
             contentRow = $(parentRow).find('+ .row');
 
             $(self).prependTo($(contentRow).find('.hero-widget'));
+    });
+
+    // handle slider
+    $('.MyNetworksControl .hero-widget-row').wrapAll('<div class="networks-slider slick-dotted" />');
+    $('.networks-slider').appendTo('.MyNetworksControl');
+    var networks = $('.networks-slider .hero-widget-row').toArray();
+
+    checkNetworksLength();
+    $(window).on('resize orientationChange', function () {
+        checkNetworksLength();
     });
 }
 
@@ -160,6 +301,10 @@ function handlePageTitle() {
     }
 }
 
+function handleLoggedInLoggedOutSections() {
+    $('div[class*="col-md-12"][class*="section"]:empty').closest('.bg-grey').hide();
+}
+
 $(function () {
     // handle search
     $('.search-bar-top').insertAfter('#MPheader > .row:first-child > .col-md-12:first-child > .pull-right:first-child');
@@ -171,10 +316,12 @@ $(function () {
     handleUnansweredQuestions();
     handlePoll();
     handleCalloutCards();
+    handleRedCard();
     handleRelatedContent();
     handleTags();
     handleBlogs();
     handleNetworks();
     handleSuggestedContacts();
     handlePageTitle();
+    handleLoggedInLoggedOutSections();
 });

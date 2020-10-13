@@ -102,7 +102,8 @@ h1, .h1 {
 }
 
 h2, .h2,
-.interior h3 {
+.interior h3,
+.interior .latest-activity .HLLandingControl h2 {
     font-weight: 500;
     font-size: 24px;
     line-height: 1.2;
@@ -167,6 +168,12 @@ h3, .h3, .HLLandingControl h3, .HLLandingControl h3 a {
     line-height: 1.2;
     color: #052B3E;
 }
+h3 a:hover,
+h3 a:focus,
+.HLLandingControl h3 a:hover,
+.HLLandingControl h3 a:focus {
+    color: #AC121B;
+}
 h4, .h4,
 h5, .h5 {
     font-weight: 500;
@@ -190,6 +197,10 @@ a {
     font-weight: 700;
     color: #AC121B;
     text-decoration: underline;
+}
+a:hover,
+a:focus {
+    color: #052B3E;
 }
 
 /*** transitions ***/
@@ -327,7 +338,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 .make-buttons em a {
     margin: 5px;
 }
-.make-buttons em a {
+.make-buttons em a,
+.HLLandingControl div[id*="More"] a,
+.HLLandingControl div[id*="BottomLink"] a {
     display: inline-block;
     font-style: normal;
     text-decoration: none;
@@ -340,12 +353,24 @@ a[id*="Welcome_Details_ProfileLink"] {
     border-radius: 5px;
 }
 .make-buttons em a:hover,
-.make-buttons em a:focus {
+.make-buttons em a:focus,
+.HLLandingControl div[id*="More"] a:hover,
+.HLLandingControl div[id*="More"] a:focus,
+.HLLandingControl div[id*="BottomLink"] a:hover,
+.HLLandingControl div[id*="BottomLink"] a:focus {
     background: #052B3E;
 }
 /*** button margin ***/
 .make-buttons.button-margin em a {
     margin-top: 40px;
+}
+
+/*** landing control buttons ***/
+
+.HLLandingControl div[id*="More"] .col-md-12,
+.HLLandingControl div[id*="BottomLink"] .col-md-12 {
+    padding: 0;
+    margin-top: 20px;
 }
 
 /*** default HL buttons ***/
@@ -369,26 +394,38 @@ a[id*="Welcome_Details_ProfileLink"] {
     padding: 2px 5px;
 }
 /****** CHANGE COLOURS ON THESE ******/
-/*.btn-default {
-    background: #fff;
-    border: 1px solid #f5f5f5;
-    color: #4E4B48;
+.btn-default {
+    background: #E3DDD6;
+    color: #052B3E;
+    border-color: #E3DDD6;
 }
 .btn-default:hover,
 .btn-default:focus {
-    background: #fafafa;
-    color: #4E4B48;
-    border-color: #4E4B48;
+    background: #E3DDD6;
+    color: #052B3E;
+    border-color: #E3DDD6;
+    opacity: 0.9;
 }
 .btn-success,
-.JoinLeaveLink .btn-primary,
 .btn-info,
+.HL-contact-suggestions .btn-primary,
 .btn-info.disabled, .btn-info[disabled], fieldset[disabled] .btn-info, .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover, .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus, .btn-info.disabled:active, .btn-info[disabled]:active, fieldset[disabled] .btn-info:active, .btn-info.disabled.active, .btn-info[disabled].active, fieldset[disabled] .btn-info.active,
 .btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success[disabled].active, fieldset[disabled] .btn-success.active {
     color: #fff;
-    background: #44BDED;
-    border-color: #44BDED;
-}*/
+    background: #15A0BA;
+    border-color: #15A0BA;
+}
+.btn-success:hover,
+.btn-success:active,
+.btn-info:hover,
+.btn-info:active,
+.HL-contact-suggestions .btn-primary:hover,
+.HL-contact-suggestions .btn-primary:active {
+    color: #fff;
+    background: #15A0BA;
+    border-color: #15A0BA;
+    opacity: 0.9;
+}
 .btn-primary,
 .ideation-home .btn-success,
 .community-radio .btn-group .btn-primary.dropdown-toggle,
@@ -461,8 +498,18 @@ a[id*="Welcome_Details_ProfileLink"] {
     padding-left: calc(50% - 600px);
     padding-right: calc(50% - 600px);
 }
+.inner-row-narrow {
+    padding-left: calc(50% - 475px);
+    padding-right: calc(50% - 475px);
+}
 @media (max-width: 1230px) {
     .inner-row-wide {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media (max-width: 991px) {
+    .inner-row-narrow {
         padding-left: 0;
         padding-right: 0;
     }
@@ -484,6 +531,11 @@ a[id*="Welcome_Details_ProfileLink"] {
 }
 .interior #MainCopy_ContentWrapper:not(.no-margin) {
     margin-top: 50px;
+}
+@media (min-width: 992px) {
+    .narrow-left-column > .col-md-8 {
+        padding-right: 85px;
+    }
 }
 
 /****** re-setting padding on heading rows ******/
@@ -528,8 +580,8 @@ a[id*="Welcome_Details_ProfileLink"] {
 .bg-grey.has-waves-white {
     position: relative;
 }
-.bg-grey.has-waves::before,
-.bg-grey.has-waves-white::before {
+.bg-grey.has-waves::after,
+.bg-grey.has-waves-white::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -539,11 +591,12 @@ a[id*="Welcome_Details_ProfileLink"] {
     background-repeat: repeat-x;
     background-size: auto 100%;
     background-position: center bottom;
+    display: block;
 }
-.bg-grey.has-waves::before {
+.bg-grey.has-waves::after {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard-grey.svg');
 }
-.bg-grey.has-waves-white::before {
+.bg-grey.has-waves-white::after {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard.svg');
     
 }
@@ -666,6 +719,7 @@ blockquote h4::before {
     right: 0;
     bottom: 0;
     height: 35px;
+    background-position: center;
 }
 #PageTitleH1.grey-border::after {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard-grey.svg');
@@ -1210,6 +1264,10 @@ div.filter-button-group .filter-label {
     margin: 12px 20px 0 0;
     text-decoration: none;
 }
+#MPAuxNav ul.level1 li a:hover,
+#MPAuxNav ul.level1 li a:focus {
+    color: #AC121B;
+}
 
 /*** login button ***/
 
@@ -1224,6 +1282,11 @@ div.filter-button-group .filter-label {
     letter-spacing: 0.02em;
     color: #ac121b;
     margin-top: 6px;
+}
+#Welcome_LoginLink:hover,
+#Welcome_LoginLink:focus {
+    background: #AC121B;
+    color: #fff;
 }
 
 /*** search ***/
@@ -1396,13 +1459,15 @@ div.filter-button-group .filter-label {
     bottom: 0;
     height: 20px;
     z-index: 20;
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard.svg');
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/thin-white-wave.svg');
     background-repeat: repeat-x;
     background-size: auto 100%;
     background-position: bottom center;
     transition: height .3s;
+    display: block;
 }
 .open.member-dashboard::after {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard.svg');
     height: 60px;
     transition: height .3s;
 }
@@ -1709,17 +1774,17 @@ div.filter-button-group .filter-label {
 .open.member-dashboard ul.slick-dots {
     display: block !important;
 }
-.member-dashboard ul.slick-dots li {
+ul.slick-dots li {
     background: #fff;
     opacity: 0.5;
     border-radius: 50%;
     width: 12px;
     height: 12px;
 }
-.member-dashboard ul.slick-dots li button {
+ul.slick-dots li button {
     display: none;
 }
-.member-dashboard ul.slick-dots li.slick-active {
+ul.slick-dots li.slick-active {
     opacity: 1;
 }
 
@@ -1895,20 +1960,27 @@ div.filter-button-group .filter-label {
 .networks-home .badge {
     display: none;
 }
-.networks-home .Content div[id*="UpdatePanel1"] {
+.networks-home .networks-slider:not(.slick-initialized) {
     display: flex;
     margin-left: -15px;
     margin-right: -15px;
 }
+.networks-home .networks-slider:not(.slick-initialized) .hero-widget-row {
+    flex-basis: 25%;
+}
+.networks-slider .slick-track {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 .networks-home .Content div[id*="UpdatePanel1"] > .row:not(.hero-widget-row) {
     display: none;
 }
-.networks-home .hero-widget-row:nth-child(3)::before,
-.networks-home .hero-widget-row:nth-child(7)::before {
+.networks-home .hero-widget-row:nth-child(odd)::before {
     content: '';
     position: absolute;
-    top: -30px;
-    left: -30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     height: 330px;
     width: 330px;
     display: block;
@@ -1919,6 +1991,7 @@ div.filter-button-group .filter-label {
 .hero-widget-row {
     margin-left: 0;
     margin-right: 0;
+    position: relative;
 }
 .hero-widget-row  .col-md-3 {
     background: #F4F2EF;
@@ -1930,13 +2003,12 @@ div.filter-button-group .filter-label {
     padding-top: 40px;
     padding-left: 30px;
     padding-right: 30px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     overflow: hidden;
 }
-.hero-widget-row:nth-child(5),
-.hero-widget-row:nth-child(7) {
+.hero-widget-row:nth-child(even) {
     margin-top: 40px;
 }
 .hero-widget-row .col-md-3,
@@ -2051,16 +2123,12 @@ div.filter-button-group .filter-label {
     padding: 7px 12px;
     text-align: center;
     width: 65px;
+    border: none;
 }
 .home .HL-contact-suggestions .Content .update-friend .btn-primary {
-    background: #15A0BA;
-    border: none;
     margin-bottom: 15px;
 }
 .home .HL-contact-suggestions .Content .update-friend .btn-default {
-    background: #E3DDD6;
-    color: #052B3E;
-    border: none;
     margin-top: 0;
 }
 
@@ -2075,10 +2143,17 @@ div.filter-button-group .filter-label {
     background: linear-gradient(104.11deg, #052B3E 1.69%, #15A0BA 127.35%);
     color: #fff;
 }
+.card-wrapper {
+    text-decoration: none;
+}
 .red-card.callout-card {
     background: linear-gradient(98.75deg, #1C2225 -1.08%, #AC121B 137.68%), #052B3E;
     color: #fff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 15px rgba(0, 0, 0, 0.08);
+}
+.card-wrapper:hover .red-card.callout-card,
+.card-wrapper:focus .red-card.callout-card {
+    background: linear-gradient(98.75deg, #1C2225 10%, #AC121B 137.68%), #052B3E;
 }
 .white-card.callout-card {
     background: #fff;
@@ -2146,6 +2221,14 @@ div.filter-button-group .filter-label {
     color: #052B3E !important;
     border-color: #fff;
 }
+.blue-card.make-buttons em a:hover,
+.blue-card.make-buttons em a:focus,
+.blue-card .btn-primary:hover,
+.blue-card .btn-primary:focus,
+.blue-card .btn-success:hover,
+.blue-card .btn-success:focus {
+    opacity: 0.9;
+}
 .blue-card.callout-card h4 + hr {
     display: none;
 }
@@ -2182,6 +2265,9 @@ div.filter-button-group .filter-label {
 }
 .callout-card .HLLandingControl ul li {
     padding-bottom: 0;
+    margin-bottom: 20px;
+}
+.callout-card .HLLandingControl ul li:last-child {
     margin-bottom: 0;
 }
 .callout-card .HLLandingControl ul li .title-row .col-sm-10.col-md-10,
@@ -2191,6 +2277,9 @@ div.filter-button-group .filter-label {
 }
 .callout-card .HLLandingControl ul li h3 {
     margin-bottom: 15px;
+}
+.callout-card .HLLandingControl ul li .BlogRating {
+    margin-bottom: 10px;
 }
 .callout-card .HLLandingControl ul li .profile-picture-byline {
     padding: 10px 25px 10px 10px;
@@ -2209,6 +2298,9 @@ div.filter-button-group .filter-label {
 .callout-card .HLLandingControl ul li .profile-picture-byline .col-md-2 {
     width: 35px;
     height: 35px;
+}
+.callout-card .HLLandingControl ul li .profile-picture-byline .ByLine a[id*="CreatedByBioBubble"] {
+    display: none;
 }
 .callout-card .HLLandingControl ul li .ByLine,
 .related-content .HLLandingControl ul li .ByLine,
@@ -2298,7 +2390,8 @@ div.filter-button-group .filter-label {
 .callout-card .HtmlContent {
     position: relative;
 }
-.callout-card > .HtmlContent > a {
+.callout-card > .HtmlContent > a,
+.callout-card .link-text {
     align-self: flex-end;
     color: #fff;
     text-decoration: none;
@@ -2361,6 +2454,10 @@ div.filter-button-group .filter-label {
     top: 8px;
     left: 8px;
 }
+.tag-button.make-buttons em a:hover,
+.tag-button.make-buttons em a:focus {
+    background: #EBE8E2;
+}
 
 /*** changing flex-basis for small desktops + phone screens ***/
 @media (min-width: 992px) and (max-width: 1090px),
@@ -2374,7 +2471,7 @@ div.filter-button-group .filter-label {
 .hero {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/rocket.png');
     background-repeat: no-repeat;
-    background-position-x: center;
+    background-position-x: 60%;
     background-position-y: calc(100% + 75px);
     position: relative;
     padding: 0 calc(50% - 600px);
@@ -2492,6 +2589,11 @@ div.filter-button-group .filter-label {
     border-radius: 5px;
     display: inline-block;
     text-decoration: none;
+}
+.hero-login a[id*="ForgotPassword"]:hover,
+.hero-login a[id*="ForgotPassword"]:focus {
+    color: #AC121B;
+    border-color: #AC121B;
 }
 .hero-login div[id*="SignupLinkSection"] p {
     font-weight: 600;
@@ -2652,6 +2754,12 @@ div.filter-button-group .filter-label {
     background: #F5F2EF;
     border-radius: 100px;
     margin-right: 10px;
+    border: 1px solid transparent;
+}
+.HLLandingControl div[id*="FoundIn"] h5 a:hover,
+.HLLandingControl div[id*="FoundIn"] h5 a:focus {
+    border-color: #AC121B;
+    color: #AC121B;
 }
 .HLLandingControl div[id*="FoundIn"] h5 a:last-of-type {
     margin-right: 0;
@@ -2660,6 +2768,9 @@ div.filter-button-group .filter-label {
 /*** homepage latest activity ***/
 .latest-activity .HLLandingControl ul li {
     padding-left: 70px;
+    position: relative;
+}
+.latest-activity .HLLandingControl ul li .title-row {
     position: relative;
 }
 .latest-activity .HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
@@ -2818,8 +2929,6 @@ div.filter-button-group .filter-label {
 }
 .home .HLRecentBlogs ul li h3 a {
     font-weight: 500;
-    font-size: 30px;
-    line-height: 1.6;
 }
 .home .HLRecentBlogs ul li a[id*="BlogList_More"] {
     position: absolute;
@@ -2901,6 +3010,10 @@ div.filter-button-group .filter-label {
 .icon-cta a {
     text-decoration: none;
     font-weight: 400;
+}
+.bg-grey .append-me {
+    position: relative;
+    z-index: 10;
 }
 
 /*** stars in background ***/
@@ -2993,15 +3106,6 @@ div.filter-button-group .filter-label {
     display: inline-block;
     margin-bottom: 0;
     margin-top: 10px;
-}
-.testimonial.bg-black p:last-child {
-    background: #5d6366;
-}
-.testimonial.bg-blue p:last-child {
-    background: #3296b1;
-}
-.testimonial.bg-red p:last-child {
-    background: #c94048;
 }
 
 /****** grey section with shield image ******/
@@ -3178,10 +3282,6 @@ div.filter-button-group .filter-label {
     #Logo>.col-md-12, #MPheader>.row:first-child>.col-md-12 {
         padding: 0;
     }
-    .bg-dark-grey.row-full.inner-row-wide > .col-md-12 > .networks-home > .row {
-        margin-left: -15px;
-        margin-right: -15px;
-    }
     .navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.disabled>a {
         font-size: 17px;
     }
@@ -3193,6 +3293,9 @@ div.filter-button-group .filter-label {
     .dropdown-group > .HtmlContent > .row {
         margin-left: -15px;
         margin-right: -15px;
+    }
+    .networks-home .networks-slider:not(.slick-initialized) .hero-widget-row  {
+        flex-basis: 33%;
     }
 }
 
@@ -3282,6 +3385,10 @@ div.filter-button-group .filter-label {
     div.filter-button-group {
         flex-basis: calc(50% - 30px);
     }
+    .bg-grey.inner-row-narrow > .col-md-12 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 
 
     /*** nav ***/
@@ -3363,9 +3470,18 @@ div.filter-button-group .filter-label {
         padding: 5px 15px 5px 25px;
     }
 }
+@media (max-width: 900px) {
+    .networks-home .networks-slider:not(.slick-initialized) .hero-widget-row  {
+        flex-basis: 50%;
+    }
+}
 @media (max-width: 768px) {
     .clip-me-shield {
         top: -110px;
+    }
+    .home .HL-contact-suggestions .Content > .row > .col-md-12 > ul > li > .title-row > .col-md-6.col-sm-6.col-xs-8 {
+        padding-right: 15px;
+        padding-left: 15px;
     }
 }
 @media (max-width: 650px) {
@@ -3405,6 +3521,12 @@ div.filter-button-group .filter-label {
     .anchored-section {
         padding-top: 40px;
         padding-bottom: 40px;
+    }
+    .hero-widget-row:nth-child(even) {
+        margin-top: 0;
+    }
+    .networks-home .networks-slider:not(.slick-initialized) .hero-widget-row  {
+        flex-basis: 100%;
     }
 }
 @media (max-width: 550px) {
