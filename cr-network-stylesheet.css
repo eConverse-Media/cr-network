@@ -1517,6 +1517,10 @@ div.filter-button-group .filter-label {
     font-weight: 700;
     border-radius: 5px;
 }
+.dashboard-toggle button:hover,
+.dashboard-toggle button:focus {
+    opacity: 0.7;
+}
 .dashboard-toggle button::after {
     font-family: CRNetwork;
     margin-left: 12px;
@@ -2749,7 +2753,8 @@ ul.slick-dots li.slick-active {
 .HLLandingControl ul li::after {
     clear: both;
 }
-.HLLandingControl .ByLine {
+.HLLandingControl .ByLine,
+.HLLandingControl div[id*="ratingStats"] {
     color: #4B4B4B;
     font-size: 12px;
     line-height: 14px;
@@ -2798,6 +2803,9 @@ ul.slick-dots li.slick-active {
 .latest-activity .HLLandingControl ul li .title-row .col-md-10.col-sm-10,
 .latest-activity .HLLandingControl ul li .title-row .col-md-7.col-sm-7 {
     width: 100%;
+}
+.latest-activity .HLLandingControl .ByLine {
+    padding-bottom: 5px;
 }
 
 /*** events ***/
@@ -3585,6 +3593,31 @@ ul.slick-dots li.slick-active {
     }
     .rowContainer.community-list div.pull-right {
         text-align: left;
+    }
+    .latest-activity .HLLandingControl ul li {
+        padding-left: 0;
+        position: relative;
+    }
+    .latest-activity .HLLandingControl ul li .title-row {
+        position: relative;
+    }
+    .latest-activity .HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 35px;
+        margin-right: 15px;
+        float: left;
+    }
+    .latest-activity .HLLandingControl ul li .title-row .col-md-10.col-sm-10, 
+    .latest-activity .HLLandingControl ul li .title-row .col-md-7.col-sm-7 {
+        float: left;
+        width: calc(100% - 50px);
+        padding: 0;
+    }
+    .latest-activity .HLLandingControl ul li .title-row a[id*="lnkDisplay"] {
+        width: 35px;
+        height: 35px;
     }
 }
 @media (max-width: 475px) {
