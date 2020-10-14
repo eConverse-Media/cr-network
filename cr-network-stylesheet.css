@@ -127,7 +127,9 @@ h2, .h2,
 }
 .big-h2 h2,
 .interior h2,
-.interior .h2 {
+.interior .h2,
+.card h3,
+.card .HLLandingControl h3 a {
     font-size: 30px;
     border: none;
     line-height: 1.2;
@@ -175,7 +177,8 @@ h3 a:focus,
     color: #AC121B;
 }
 h4, .h4,
-h5, .h5 {
+h5, .h5,
+.card h2 {
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
@@ -710,7 +713,7 @@ blockquote h4::before {
     position: relative;
 }
 #PageTitleH1::after {
-    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/white-wave-repeatX-standard.svg');
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/COMMUNITYROUNDTABLE/e7fcd1a0-4605-4cb6-ab5a-99bf97c7cb09/UploadedImages/2020_eConverse_Site/design_elements/thin-white-wave.svg');
     background-repeat: repeat-x;
     background-size: auto 100%;
     content: '';
@@ -2139,6 +2142,9 @@ ul.slick-dots li.slick-active {
     background: rgba(245, 242, 239, 0.5);
     margin-bottom: 40px;
 }
+.callout-card.no-child {
+    display: none;
+}
 .blue-card.callout-card {
     background: linear-gradient(104.11deg, #052B3E 1.69%, #15A0BA 127.35%);
     color: #fff;
@@ -2281,21 +2287,30 @@ ul.slick-dots li.slick-active {
 .callout-card .HLLandingControl ul li .BlogRating {
     margin-bottom: 10px;
 }
-.callout-card .HLLandingControl ul li .profile-picture-byline {
+.callout-card .HLLandingControl ul li .profile-picture-byline,
+.card .HLLandingControl ul li .profile-picture-byline {
     padding: 10px 25px 10px 10px;
     border-radius: 100px;
     background: #fff;
     display: inline-flex;
     align-items: center;
 }
+.card .HLLandingControl ul li .profile-picture-byline {
+    background: #F4F2EF;
+    margin-top: 14px;
+}
 .callout-card .HLLandingControl ul li .profile-picture-byline .col-md-2,
 .callout-card .HLLandingControl ul li .ByLine,
+.card .HLLandingControl ul li .profile-picture-byline .col-md-2,
+.card .HLLandingControl ul li .ByLine,
 .related-content .HLLandingControl ul li .profile-picture-byline .col-md-2,
 .related-content .HLLandingControl ul li .ByLine {
     float: none;
 }
 .callout-card .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"],
-.callout-card .HLLandingControl ul li .profile-picture-byline .col-md-2 {
+.callout-card .HLLandingControl ul li .profile-picture-byline .col-md-2,
+.card .HLLandingControl ul li .profile-picture-byline a[id*="imgProfPic"],
+.card .HLLandingControl ul li .profile-picture-byline .col-md-2 {
     width: 35px;
     height: 35px;
 }
@@ -2303,6 +2318,7 @@ ul.slick-dots li.slick-active {
     display: none;
 }
 .callout-card .HLLandingControl ul li .ByLine,
+.card .HLLandingControl ul li .ByLine,
 .related-content .HLLandingControl ul li .ByLine,
 .HLLandingControl .callout-card .ByLine {
     padding-left: 20px;
@@ -2310,6 +2326,7 @@ ul.slick-dots li.slick-active {
     letter-spacing: 0.04em;
 }
 .callout-card .HLLandingControl ul li .ByLine a,
+.card .HLLandingControl ul li .ByLine a,
 .related-content .HLLandingControl ul li .ByLine a,
 .HLLandingControl .callout-card .ByLine a {
     display: block;
@@ -3123,6 +3140,7 @@ ul.slick-dots li.slick-active {
 .card h2 {
     margin-top: 0;
     margin-bottom: 5px;
+    border: none;
 }
 .card h5 {
     background: #F4F2EF;
@@ -3142,6 +3160,13 @@ ul.slick-dots li.slick-active {
 .card h5 a {
     text-decoration: none;
 }
+.card .HLLandingControl ul {
+    padding-top: 0;
+}
+.card .HLLandingControl .Content ul li {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
 .get-the-scoop {
     margin-top: 45px;
     margin-bottom: 130px;
@@ -3149,7 +3174,9 @@ ul.slick-dots li.slick-active {
 .card.floating-button em {
     margin: 0;
 }
-.card.floating-button em a {
+.card.floating-button em a,
+.card.floating-button div[id*="More"] a,
+.card.floating-button div[id*="BottomLink"] a {
     position: absolute;
     right: 35px;
     bottom: 0;

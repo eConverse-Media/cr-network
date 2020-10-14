@@ -102,7 +102,16 @@ function handleByLineAndPicture(self) {
 }
 
 function handleCalloutCards() {
-    $('.callout-card .HLLandingControl ul li, .HLLandingControl ul li.callout-card').each(function () {
+    $('.callout-card').each(function () {
+        var self = $(this),
+            hasChild = !!($(self).find(' > *').html());
+
+        if (!hasChild) {
+            $(self).addClass('no-child');
+        }
+    });
+
+    $('.callout-card .HLLandingControl ul li, .HLLandingControl ul li.callout-card, .card .HLLandingControl ul li').each(function () {
         var self = $(this);
 
         handleByLineAndPicture(self);
