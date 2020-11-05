@@ -2134,6 +2134,13 @@ ul.slick-dots li.slick-active {
 }
 .home .HL-contact-suggestions .Content .update-friend .btn-primary {
     margin-bottom: 15px;
+    font-size: 0;
+    line-height: 0;
+}
+.home .HL-contact-suggestions .Content .update-friend .btn-primary::before {
+    content: 'Add';
+    font-size: 14px;
+    line-height: 17px;
 }
 .home .HL-contact-suggestions .Content .update-friend .btn-default {
     margin-top: 0;

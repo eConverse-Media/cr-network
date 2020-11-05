@@ -300,10 +300,6 @@ function handleNetworks() {
     });
 }
 
-function handleSuggestedContacts() {
-    $('.home .HL-contact-suggestions .update-friend .btn-primary').text('Add');
-}
-
 function handlePageTitle() {
     if ($('#MainCopy_ContentWrapper').hasClass('no-margin')) {
         $('#PageTitleH1').addClass('grey-border');
@@ -330,7 +326,6 @@ $(function () {
     handleTags();
     handleBlogs();
     handleNetworks();
-    handleSuggestedContacts();
     handlePageTitle();
     handleLoggedInLoggedOutSections();
 });
