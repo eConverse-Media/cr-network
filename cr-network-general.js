@@ -56,6 +56,10 @@ function handleUnansweredQuestions() {
     $('.unanswered-questions .HLLandingControl ul li').addClass('callout-card');
 }
 
+function handleLatestActivity() {
+    $('.home .start-discussion').prependTo('.home .latest-activity');
+}
+
 function handlePoll() {
 
     var hasPollHtml = false;
@@ -267,14 +271,16 @@ function handleNetworks() {
         var width = $(window).width(),
             networksLength = networks.length;
 
-        if (networksLength > 4) {
-            slickifyDesktop();
-        } else if (networksLength == 4 && width < 1200) {
-            slickifyLarge();
-        } else if (networksLength == 3 && width < 900) {
-            slickifyMedium();
-        } else if (networksLength == 2 && width < 600) {
-            slickifySmall();
+        if (!($('.networks-slider').hasClass('slick-initialized'))) {
+            if (networksLength > 4) {
+                slickifyDesktop();
+            } else if (networksLength == 4 && width < 1200) {
+                slickifyLarge();
+            } else if (networksLength == 3 && width < 900) {
+                slickifyMedium();
+            } else if (networksLength == 2 && width < 600) {
+                slickifySmall();
+            }
         }
 
     }
@@ -319,6 +325,7 @@ $(function () {
     handleTestimonials();
     handleLandingControls();
     handleUnansweredQuestions();
+    handleLatestActivity();
     handlePoll();
     handleCalloutCards();
     handleRedCard();

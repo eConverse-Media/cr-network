@@ -83,6 +83,20 @@ body {
         float: left;
     }
 }
+/*** fixing non-responsive images ***/
+img {
+    max-width: 100%;
+}
+
+/*** fixing lack of wrapping on community settings dropdown buttons ***/
+.CommunityManagementGearStatusPaddingL {
+    white-space: normal;
+}
+/****** fix missing left-hand profile page content on my contacts page ******/
+.text-muted-h2.my-contacts .col-md-3.section1 {
+    display: block !important;
+}
+
 
 /****** basics ******/
 
@@ -198,13 +212,15 @@ h5, .h5,
 }
 
 a {
-    font-weight: 700;
     color: #AC121B;
     text-decoration: underline;
 }
 a:hover,
 a:focus {
     color: #052B3E;
+}
+.ByLine a {
+    font-weight: 700;
 }
 
 /*** transitions ***/
@@ -258,7 +274,10 @@ a, a:hover, a:focus, button, button:hover, button:focus, input, input:hover, inp
     background: #f9f9f9;
 }
 
-.HLEngagement .Picture a {
+.HLEngagement .Picture a,
+.HL-contact-suggestions a[oldtitle="User Name Image"],
+div[id*="DisplayContacts"] a[id*="Contacts_PictureLink"],
+.GroupMember a[id*="lnkDisplay"] {
     width: 50px;
     height: 50px;
 }
@@ -266,6 +285,9 @@ a, a:hover, a:focus, button, button:hover, button:focus, input, input:hover, inp
 a[id*="Welcome_Details_ProfileLink"] {
     width: 60px;
     height: 60px;
+}
+.bioBubbleShell .Pict img {
+    max-width: 55px;
 }
 
 .HLLandingControl.HLDiscussions .title-row img, .HLLandingControl.HLMyDocuments .title-row img, .HLLandingControl.HLEngagement .title-row img, .HLLandingControl.HLRecentBlogs .title-row img {
@@ -284,6 +306,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 
 .member-directory .member-picture {
     text-align: center;
+}
+.profile-img-lg {
+    margin-bottom: 0;
 }
 
 /*** image containers ***/
@@ -364,6 +389,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 .HLLandingControl div[id*="BottomLink"] a:focus {
     background: #052B3E;
 }
+.make-buttons.start-discussion em a {
+    padding: 5px 10px;
+}
 /*** button margin ***/
 .make-buttons.button-margin em a {
     margin-top: 40px;
@@ -414,7 +442,8 @@ a[id*="Welcome_Details_ProfileLink"] {
 .btn-info,
 .HL-contact-suggestions .btn-primary,
 .btn-info.disabled, .btn-info[disabled], fieldset[disabled] .btn-info, .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover, .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus, .btn-info.disabled:active, .btn-info[disabled]:active, fieldset[disabled] .btn-info:active, .btn-info.disabled.active, .btn-info[disabled].active, fieldset[disabled] .btn-info.active,
-.btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success[disabled].active, fieldset[disabled] .btn-success.active {
+.btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success[disabled].active, fieldset[disabled] .btn-success.active,
+.make-buttons.start-discussion em a {
     color: #fff;
     background: #15A0BA;
     border-color: #15A0BA;
@@ -424,7 +453,9 @@ a[id*="Welcome_Details_ProfileLink"] {
 .btn-info:hover,
 .btn-info:active,
 .HL-contact-suggestions .btn-primary:hover,
-.HL-contact-suggestions .btn-primary:active {
+.HL-contact-suggestions .btn-primary:active,
+.make-buttons.start-discussion em a:hover,
+.make-buttons.start-discussion em a:focus {
     color: #fff;
     background: #15A0BA;
     border-color: #15A0BA;
@@ -1980,7 +2011,8 @@ ul.slick-dots li.slick-active {
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.networks-home .Content div[id*="UpdatePanel1"] > .row:not(.hero-widget-row) {
+.networks-home .Content div[id*="UpdatePanel1"] > .row:not(.hero-widget-row),
+.networks-home .hero-widget-row > .col-md-3:not(:first-child) {
     display: none;
 }
 .networks-home .hero-widget-row:nth-child(odd)::before {
@@ -2015,6 +2047,7 @@ ul.slick-dots li.slick-active {
     margin-right: auto;
     position: relative;
     overflow: hidden;
+    float: none;
 }
 .hero-widget-row:nth-child(even) {
     margin-top: 40px;
@@ -2038,7 +2071,7 @@ ul.slick-dots li.slick-active {
 .hero-widget-row h4 {
     color: #AC121B;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .hero-widget-row h4::before {
     font-family: CRNetwork;
@@ -2278,68 +2311,68 @@ ul.slick-dots li.slick-active {
 
 /*** card with landing control ***/
 
-.callout-card .HLLandingControl ul {
+.callout-card .HLLandingControl .Content ul {
     padding-top: 45px;
 }
-.callout-card .HLLandingControl ul li {
+.callout-card .HLLandingControl .Content ul li {
     padding-bottom: 0;
     margin-bottom: 20px;
 }
-.callout-card .HLLandingControl ul li:last-child {
+.callout-card .HLLandingControl .Content ul li:last-child {
     margin-bottom: 0;
 }
-.callout-card .HLLandingControl ul li .title-row .col-sm-10.col-md-10,
-.related-content .HLLandingControl ul li .title-row .col-sm-7.col-md-7,
+.callout-card .HLLandingControl .Content ul li .title-row .col-sm-10.col-md-10,
+.related-content .HLLandingControl .Content ul li .title-row .col-sm-7.col-md-7,
 .HLLandingControl .callout-card .title-row .col-sm-10.col-md-10 {
     width: 100%;
 }
-.callout-card .HLLandingControl ul li h3 {
+.callout-card .HLLandingControl .Content ul li h3 {
     margin-bottom: 15px;
 }
-.callout-card .HLLandingControl ul li .BlogRating {
+.callout-card .HLLandingControl .Content ul li .BlogRating {
     margin-bottom: 10px;
 }
-.callout-card .HLLandingControl ul li .profile-picture-byline,
-.card .HLLandingControl ul li .profile-picture-byline {
+.callout-card .HLLandingControl .Content ul li .profile-picture-byline,
+.card .HLLandingControl .Content ul li .profile-picture-byline {
     padding: 10px 25px 10px 10px;
     border-radius: 100px;
     background: #fff;
     display: inline-flex;
     align-items: center;
 }
-.card .HLLandingControl ul li .profile-picture-byline {
+.card .HLLandingControl .Content ul li .profile-picture-byline {
     background: #F4F2EF;
     margin-top: 14px;
 }
-.callout-card .HLLandingControl ul li .profile-picture-byline .col-md-2,
-.callout-card .HLLandingControl ul li .ByLine,
-.card .HLLandingControl ul li .profile-picture-byline .col-md-2,
-.card .HLLandingControl ul li .ByLine,
-.related-content .HLLandingControl ul li .profile-picture-byline .col-md-2,
-.related-content .HLLandingControl ul li .ByLine {
+.callout-card .HLLandingControl .Content ul li .profile-picture-byline .col-md-2,
+.callout-card .HLLandingControl .Content ul li .ByLine,
+.card .HLLandingControl .Content ul li .profile-picture-byline .col-md-2,
+.card .HLLandingControl .Content ul li .ByLine,
+.related-content .HLLandingControl .Content ul li .profile-picture-byline .col-md-2,
+.related-content .HLLandingControl .Content ul li .ByLine {
     float: none;
 }
-.callout-card .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"],
-.callout-card .HLLandingControl ul li .profile-picture-byline .col-md-2,
-.card .HLLandingControl ul li .profile-picture-byline a[id*="imgProfPic"],
-.card .HLLandingControl ul li .profile-picture-byline .col-md-2 {
+.callout-card .HLLandingControl .Content ul li .profile-picture-byline a[id*="ProfileImage"],
+.callout-card .HLLandingControl .Content ul li .profile-picture-byline .col-md-2,
+.card .HLLandingControl .Content ul li .profile-picture-byline a[id*="imgProfPic"],
+.card .HLLandingControl .Content ul li .profile-picture-byline .col-md-2 {
     width: 35px;
     height: 35px;
 }
-.callout-card .HLLandingControl ul li .profile-picture-byline .ByLine a[id*="CreatedByBioBubble"] {
+.callout-card .HLLandingControl .Content ul li .profile-picture-byline .ByLine a[id*="CreatedByBioBubble"] {
     display: none;
 }
-.callout-card .HLLandingControl ul li .ByLine,
-.card .HLLandingControl ul li .ByLine,
-.related-content .HLLandingControl ul li .ByLine,
+.callout-card .HLLandingControl .Content ul li .ByLine,
+.card .HLLandingControl .Content ul li .ByLine,
+.related-content .HLLandingControl .Content ul li .ByLine,
 .HLLandingControl .callout-card .ByLine {
     padding-left: 20px;
     padding-top: 0;
     letter-spacing: 0.04em;
 }
-.callout-card .HLLandingControl ul li .ByLine a,
-.card .HLLandingControl ul li .ByLine a,
-.related-content .HLLandingControl ul li .ByLine a,
+.callout-card .HLLandingControl .Content ul li .ByLine a,
+.card .HLLandingControl .Content ul li .ByLine a,
+.related-content .HLLandingControl .Content ul li .ByLine a,
 .HLLandingControl .callout-card .ByLine a {
     display: block;
     font-weight: 700;
@@ -2384,33 +2417,33 @@ ul.slick-dots li.slick-active {
 .unanswered-questions .HLLandingControl .Content ul {
     padding-top: 0;
 }
-.unanswered-questions .HLLandingControl ul li.callout-card {
+.unanswered-questions .HLLandingControl .Content ul li.callout-card {
     position: relative;
     padding: 20px 30px 50px 30px;
     margin-bottom: 35px;
 }
-.unanswered-questions .HLLandingControl ul li.callout-card:last-child {
+.unanswered-questions .HLLandingControl .Content ul li.callout-card:last-child {
     margin-bottom: 0;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline,
-.related-content .HLLandingControl ul li .profile-picture-byline {
+.unanswered-questions .HLLandingControl .Content ul li .profile-picture-byline,
+.related-content .HLLandingControl .Content ul li .profile-picture-byline {
     padding-left: 55px;
     position: absolute;
     bottom: 10px;
     left: 30px;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline .col-md-2,
-.related-content .HLLandingControl ul li .profile-picture-byline .col-md-2 {
+.unanswered-questions .HLLandingControl .Content ul li .profile-picture-byline .col-md-2,
+.related-content .HLLandingControl .Content ul li .profile-picture-byline .col-md-2 {
     position: absolute;
     top: 0;
     left: 0;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"],
-.related-content .HLLandingControl ul li .profile-picture-byline a[id*="imgProfPic"] {
+.unanswered-questions .HLLandingControl .Content ul li .profile-picture-byline a[id*="ProfileImage"],
+.related-content .HLLandingControl .Content ul li .profile-picture-byline a[id*="imgProfPic"] {
     border: 5px solid #fff;
 }
-.unanswered-questions .HLLandingControl ul li .profile-picture-byline a[id*="ProfileImage"] img,
-.related-content .HLLandingControl ul li .profile-picture-byline a[id*="imgProfPic"] img {
+.unanswered-questions .HLLandingControl .Content ul li .profile-picture-byline a[id*="ProfileImage"] img,
+.related-content .HLLandingControl .Content ul li .profile-picture-byline a[id*="imgProfPic"] img {
     width: 55px !important;
     height: 55px !important;
 }
@@ -2472,6 +2505,9 @@ ul.slick-dots li.slick-active {
     background: #F5F2EF;
     color: #AC121B;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .tag-button.make-buttons em a::before {
     content: '';
@@ -2723,12 +2759,12 @@ ul.slick-dots li.slick-active {
     padding-top: 25px;
 }
 
-.HLLandingControl ul li {
+.HLLandingControl .Content ul li {
     padding-bottom: 30px;
     margin-bottom: 15px;
     border-bottom: 1px solid #F4F6F7;
 }
-.HLLandingControl ul li:last-child {
+.HLLandingControl .Content ul li:last-child {
     border-bottom: none;
 }
 .SearchResults.HLLandingControl .title-row img {
@@ -2736,14 +2772,14 @@ ul.slick-dots li.slick-active {
 }
 
 /*** fix for ACL labels ***/
-.HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
+.HLLandingControl .Content ul li .title-row .col-sm-2.col-md-2 {
     width: 55px;
     margin-right: 20px;
     float: left;
     padding: 0;
 }
-.HLLandingControl ul li .title-row .col-md-10.col-sm-10,
-.HLLandingControl ul li .title-row .col-md-7.col-sm-7 {
+.HLLandingControl .Content ul li .title-row .col-md-10.col-sm-10,
+.HLLandingControl .Content ul li .title-row .col-md-7.col-sm-7 {
     float: left;
     width: calc(100% - 75px); 
     padding: 0;
@@ -2753,12 +2789,12 @@ ul.slick-dots li.slick-active {
 }
 
 /*** byline and posted in ***/
-.HLLandingControl ul li::before,
-.HLLandingControl ul li::after {
+.HLLandingControl .Content ul li::before,
+.HLLandingControl .Content ul li::after {
     content: ' ';
     display: table;
 }
-.HLLandingControl ul li::after {
+.HLLandingControl .Content ul li::after {
     clear: both;
 }
 .HLLandingControl .ByLine,
@@ -2796,24 +2832,35 @@ ul.slick-dots li.slick-active {
 }
 
 /*** homepage latest activity ***/
-.latest-activity .HLLandingControl ul li {
+.latest-activity {
+    position: relative;
+}
+.latest-activity .HLLandingControl .Content ul li {
     padding-left: 70px;
     position: relative;
 }
-.latest-activity .HLLandingControl ul li .title-row {
+.latest-activity .HLLandingControl .Content ul li .title-row {
     position: relative;
 }
-.latest-activity .HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
+.latest-activity .HLLandingControl .Content ul li .title-row .col-sm-2.col-md-2 {
     position: absolute;
     left: -70px;
     top: 0;
 }
-.latest-activity .HLLandingControl ul li .title-row .col-md-10.col-sm-10,
-.latest-activity .HLLandingControl ul li .title-row .col-md-7.col-sm-7 {
+.latest-activity .HLLandingControl .Content ul li .title-row .col-md-10.col-sm-10,
+.latest-activity .HLLandingControl .Content ul li .title-row .col-md-7.col-sm-7 {
     width: 100%;
 }
 .latest-activity .HLLandingControl .ByLine {
     padding-bottom: 5px;
+}
+
+/* start a discussion button */
+.start-discussion {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 10;
 }
 
 /*** events ***/
@@ -2940,7 +2987,7 @@ ul.slick-dots li.slick-active {
     flex-shrink: 1;
     flex-basis: calc(100% - 200px);
 }
-.home .HLRecentBlogs.HLLandingControl ul li .title-row .col-md-10.col-sm-10 {
+.home .HLRecentBlogs.HLLandingControl .Content ul li .title-row .col-md-10.col-sm-10 {
     width: 100%;
 }
 .home .HLRecentBlogs ul li .text-container > .content-row > .col-md-12 {
@@ -3176,7 +3223,7 @@ ul.slick-dots li.slick-active {
 .card h5 a {
     text-decoration: none;
 }
-.card .HLLandingControl ul {
+.card .HLLandingControl .Content ul {
     padding-top: 0;
 }
 .card .HLLandingControl .Content ul li {
@@ -3593,6 +3640,13 @@ ul.slick-dots li.slick-active {
         left: 15px;
         right: auto;
     }
+    .unanswered-questions {
+        padding-top: 60px;
+    }
+    .unanswered-questions h2 input.btn-sm.btn-success {
+        display: block;
+        margin-left: 50px;
+    }
 }
 @media (max-width: 480px) {
     a.btn-community-stats-static span.badge {
@@ -3602,14 +3656,14 @@ ul.slick-dots li.slick-active {
     .rowContainer.community-list div.pull-right {
         text-align: left;
     }
-    .latest-activity .HLLandingControl ul li {
+    .latest-activity .HLLandingControl .Content ul li {
         padding-left: 0;
         position: relative;
     }
-    .latest-activity .HLLandingControl ul li .title-row {
+    .latest-activity .HLLandingControl .Content ul li .title-row {
         position: relative;
     }
-    .latest-activity .HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
+    .latest-activity .HLLandingControl .Content ul li .title-row .col-sm-2.col-md-2 {
         position: relative;
         left: auto;
         top: auto;
@@ -3617,13 +3671,13 @@ ul.slick-dots li.slick-active {
         margin-right: 15px;
         float: left;
     }
-    .latest-activity .HLLandingControl ul li .title-row .col-md-10.col-sm-10, 
-    .latest-activity .HLLandingControl ul li .title-row .col-md-7.col-sm-7 {
+    .latest-activity .HLLandingControl .Content ul li .title-row .col-md-10.col-sm-10, 
+    .latest-activity .HLLandingControl .Content ul li .title-row .col-md-7.col-sm-7 {
         float: left;
         width: calc(100% - 50px);
         padding: 0;
     }
-    .latest-activity .HLLandingControl ul li .title-row a[id*="lnkDisplay"] {
+    .latest-activity .HLLandingControl .Content ul li .title-row a[id*="lnkDisplay"] {
         width: 35px;
         height: 35px;
     }
@@ -3641,11 +3695,14 @@ ul.slick-dots li.slick-active {
         font-size: 28px;
     }
     .unanswered-questions {
-        padding: 15px;
+        padding: 60px 15px 15px 15px;
     }
-    .unanswered-questions .HLLandingControl ul li.callout-card {
+    .unanswered-questions .HLLandingControl .Content ul li.callout-card {
         margin-bottom: 20px;
         padding-bottom: 65px;
+    }
+    .start-discussion {
+        top: 5px;
     }
 }
 @media (max-width: 375px) {
