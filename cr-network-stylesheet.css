@@ -277,7 +277,9 @@ a, a:hover, a:focus, button, button:hover, button:focus, input, input:hover, inp
 .HLEngagement .Picture a,
 .HL-contact-suggestions a[oldtitle="User Name Image"],
 div[id*="DisplayContacts"] a[id*="Contacts_PictureLink"],
-.GroupMember a[id*="lnkDisplay"] {
+.GroupMember a[id*="lnkDisplay"],
+.library-list a[id*="ProfileImage"]:not([id*="NameLink"]):not([id*="ManageDropDown"]),
+.blogs-block a[id*="ProfileImage"]:not([id*="NameLink"]):not([id*="ManageDropDown"]) {
     width: 50px;
     height: 50px;
 }
@@ -432,7 +434,10 @@ a[id*="Welcome_Details_ProfileLink"] {
     border-color: #E3DDD6;
 }
 .btn-default:hover,
-.btn-default:focus {
+.btn-default:focus,
+.btn-default:active, 
+.btn-default.active, 
+.open .dropdown-toggle.btn-default {
     background: #E3DDD6;
     color: #052B3E;
     border-color: #E3DDD6;
@@ -449,17 +454,24 @@ a[id*="Welcome_Details_ProfileLink"] {
     border-color: #15A0BA;
 }
 .btn-success:hover,
+.btn-success:focus,
 .btn-success:active,
 .btn-info:hover,
 .btn-info:active,
 .HL-contact-suggestions .btn-primary:hover,
 .HL-contact-suggestions .btn-primary:active,
 .make-buttons.start-discussion em a:hover,
-.make-buttons.start-discussion em a:focus {
+.make-buttons.start-discussion em a:focus,
+.btn-success:active, 
+.btn-success.active, 
+.open .dropdown-toggle.btn-success {
     color: #fff;
     background: #15A0BA;
     border-color: #15A0BA;
     opacity: 0.9;
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success {
+    background: #15a0ba;
 }
 .btn-primary,
 .ideation-home .btn-success,
@@ -2786,6 +2798,12 @@ ul.slick-dots li.slick-active {
 }
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right {
     display: none;
+}
+.get-the-scoop .HLLandingControl .Content ul li .title-row .col-md-7.col-sm-7,
+.get-the-scoop .HLLandingControl .Content ul li .title-row .col-md-10.col-sm-10,
+.unanswered-questions .HLLandingControl .Content ul li .title-row .col-md-7.col-sm-7,
+.unanswered-questions .HLLandingControl .Content ul li .title-row .col-md-10.col-sm-10 {
+    width: 100%;
 }
 
 /*** byline and posted in ***/
