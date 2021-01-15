@@ -1,3 +1,5 @@
+var filterText = [];
+
 $(function () {
     $('<div class="dropdown-group"><div class="HtmlContent"></div></div>').insertBefore('.grid');
 
@@ -101,9 +103,11 @@ $(function () {
             selectors = $(parent).find('.checkbox-filter input').toArray(),
             parentGroup = $(parent).attr('class').split(/\s+/)[0],
             label = $(parent).find('.filter-label'),
-            text = $(self).attr('id').toLowerCase(),
+            text = $(self).attr('data-filter').toLowerCase(),
             labelText,
             defaultText = 'Filter by';
+
+        text = text.substring(1, text.length);
 
         //toggle active class
         $(self).toggleClass('active');
@@ -125,14 +129,24 @@ $(function () {
         }
 
         // set dropdown label text
-        text = text.replace('-', ' ');
 
         filterButtonGroup = $('.filter-button-group');
 
         $(filterButtonGroup).each(function (i) {
             var filterButtonFirstElement = filterButtonGroup[i];
             var elementFirstClass = filterButtonFirstElement.className.split(' ')[0];
-            var classConversion = elementFirstClass.replace(/-/g, ' ');
+            var classConversion;
+
+            for (var i = 0; i < filterText.length; i++) {
+                var currText = filterText[i],
+                    currTextClass = currText.categoryClass;
+
+                if (currTextClass == elementFirstClass) {
+                    classConversion = currText.categoryName;
+                } else if (currTextClass == text) {
+                    text = currText.categoryName;
+                }
+            }
 
             switch (parentGroup) {
                 case elementFirstClass:
@@ -255,47 +269,75 @@ function makinFilters() {
         categoriesMaster.categoryType = categoryValue;
         categoriesMaster.tag = tagValue;
         categoryList.push(categoriesMaster);
+
+
     });
 
     categoryList.forEach(function (category) {
-        var categoryTypeClassConversion = category.categoryType;
-        categoryTypeClassConversion = categoryTypeClassConversion.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9\-]+/g, '').toLowerCase();
+        var categoryType = category.categoryType;
 
-        var categoryTagClassConversion = category.tag;
-
-        categoryTagClassConversion = categoryTagClassConversion
-            .replace(/\s+/g, '-')
-            .replace(/[^a-zA-Z0-9\-]+/g, '')
-            .toLowerCase();
-            
-        if (
-            $('.dropdown-group .HtmlContent > div.' + categoryTypeClassConversion + '.filter-button-group').length === 0
-        ) {
-            $('.dropdown-group .HtmlContent').append(
-                '<div class="' +
-                categoryTypeClassConversion +
-                ' filter-button-group "><span class="filter-label">Filter by ' +
-                category.categoryType +
-                '</span><div class="filter-content"><ul class="multiple-select"></ul></div></div>'
-            );
-        }
-
-        if ($('.filter-button-group').hasClass(categoryTypeClassConversion)) {
+        if (categoryType != 'Content Types') {
+            var categoryTypeClassConversion = categoryType.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9\-]+/g, '').toLowerCase();
+    
+    
+            var categoryTag = category.tag;
+    
+            categoryTagClassConversion = categoryTag
+                .replace(/\s+/g, '-')
+                .replace(/[^a-zA-Z0-9\-]+/g, '')
+                .toLowerCase();
+                
             if (
-                $('ul.multiple-select > li.checkbox-filter input[data-filter=".' + categoryTagClassConversion + '"]')
-                    .length === 0
+                $('.dropdown-group .HtmlContent > div.' + categoryTypeClassConversion + '.filter-button-group').length === 0
             ) {
-                $('div.' + categoryTypeClassConversion + '.filter-button-group ul.multiple-select').append(
-                    '<li class="checkbox-filter"><input type="checkbox" id="' +
-                    category.tag +
-                    '" data-filter=".' +
-                    categoryTagClassConversion +
-                    '">' +
-                    category.tag +
-                    '<span class="checkmark"></span></li>'
+
+                // add filter class + text to array
+                var tempObj = {
+                    categoryName: categoryType,
+                    categoryClass: categoryTypeClassConversion
+                }
+                filterText.push(tempObj);
+                // add new filter group
+                $('.dropdown-group .HtmlContent').append(
+                    '<div class="' +
+                    categoryTypeClassConversion +
+                    ' filter-button-group "><span class="filter-label">Filter by ' +
+                    category.categoryType +
+                    '</span><div class="filter-content"><ul class="multiple-select"></ul></div></div>'
                 );
+    
             }
+    
+            if ($('.filter-button-group').hasClass(categoryTypeClassConversion)) {
+    
+                if (
+                    $('ul.multiple-select > li.checkbox-filter input[data-filter=".' + categoryTagClassConversion + '"]')
+                        .length === 0
+                ) {
+
+                    // add text to array
+                    var tempObj = {
+                        categoryName: categoryTag,
+                        categoryClass: categoryTagClassConversion
+                    }
+                    filterText.push(tempObj);
+
+                    // add to filter group
+                    $('div.' + categoryTypeClassConversion + '.filter-button-group ul.multiple-select').append(
+                        '<li class="checkbox-filter"><input type="checkbox" id="' +
+                        category.tag +
+                        '" data-filter=".' +
+                        categoryTagClassConversion +
+                        '">' +
+                        category.tag +
+                        '<span class="checkmark"></span></li>'
+                    );
+    
+                }
+            }
+            
         }
+
     
     });
 
