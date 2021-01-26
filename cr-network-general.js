@@ -124,7 +124,7 @@ function handleCalloutCards() {
 }
 
 function handleRedCard() {
-    $('.callout-card.red-card').each(function () {
+    $('.callout-card.red-card, .callout-card.library-card').each(function () {
         var self = $(this),
             link = $(self).find('a'),
             target = $(link).attr('target'),
