@@ -981,7 +981,7 @@ blockquote h4::before {
 }
 
 .grid .library-list>div[id*="NameBlock"] {
-    height: 100%;
+    height: 265px;
     padding: 0 25px 30px 25px;
 }
 .grid .library-list h3 a {
@@ -996,7 +996,6 @@ blockquote h4::before {
 }
 
 .grid div[id*="NameBlock"] > div:nth-child(4) > .margin-bottom-medium {
-    height: 95px;
     overflow: hidden;
     position: relative;
     font-size: 18px;
@@ -1245,11 +1244,12 @@ div.filter-button-group .filter-label {
 
 .grid .library-list .attachment-wrap {
     position: absolute;
-    bottom: 0px;
+    bottom: -30px;
     left: 0px;
     right: 0px;
     padding: 15px;
     background-color: white;
+    min-height: 80px;
 }
 
 .grid .library-list .attachment-wrap::before {

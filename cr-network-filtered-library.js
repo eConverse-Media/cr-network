@@ -12,7 +12,7 @@ $(function () {
 
         // handle image 
 
-        $(title).closest('.row').prepend('<div class="img-container"/>');
+        $(self).prepend('<div class="img-container"/>');
 
         var entryImg = !!($(self).find('div[id*="fileListInlineWrapper"] .listIconContainer div[id*="pnlImages"] a img').attr('src')) ? $(self).find('div[id*="fileListInlineWrapper"] .listIconContainer div[id*="pnlImages"] a img') : $(self).find('.libListReptEntByline + div .row.margin-bottom-medium img');
 
