@@ -1221,7 +1221,7 @@ div.filter-button-group .filter-label {
     bottom: 0;
 }
 
-.filtered-library > .col-md-12 {
+.filtered-library > .col-md-12:not(:empty) {
     min-height: 300px;
 }
 
@@ -2499,8 +2499,11 @@ ul.slick-dots li.slick-active {
 .callout-card > .HtmlContent > a,
 .callout-card .link-text {
     align-self: flex-end;
-    color: #fff;
     text-decoration: none;
+}
+.callout-card:not(.white-card) > .HtmlContent > a,
+.callout-card:not(.white-card) .link-text {
+    color: #fff;
 }
 .callout-card.icon {
     position: relative;
@@ -2516,6 +2519,53 @@ ul.slick-dots li.slick-active {
 }
 .callout-card.icon.bell::before {
     content: '\f006';
+}
+
+/****** library cards ******/
+.flex-library-cards > .col-md-12 {
+    display: flex;
+    flex-wrap: wrap;
+}
+.library-card {
+    flex-basis: calc(33.3333333% - 30px);
+    margin: 15px;
+    text-align: center;
+}
+.library-card > .HtmlContent > a {
+    align-self: unset;
+}
+.library-card a::after {
+    font-family: CRNetwork;
+    content: '\f019';
+    margin-left: 8px;
+}
+.library-card h2 {
+    margin-bottom: 50px;
+}
+.library-card h2::before {
+    font-family: CRNetwork;
+    color: #AC121B;
+    font-size: 100px;
+    line-height: 1;
+    display: block;
+}
+.library-card:first-child h2::before,
+.library-card:nth-child(4) h2::before,
+.library-card:nth-child(7) h2::before,
+.library-card:nth-child(10) h2::before {
+    content: '\f00c';
+}
+.library-card:nth-child(2) h2::before,
+.library-card:nth-child(5) h2::before,
+.library-card:nth-child(8) h2::before,
+.library-card:nth-child(11) h2::before {
+    content: '\f00d';
+}
+.library-card:nth-child(3) h2::before,
+.library-card:nth-child(6) h2::before,
+.library-card:nth-child(9) h2::before,
+.library-card:nth-child(12) h2::before {
+    content: '\f010';
 }
 
 /****** tag buttons ******/
@@ -3603,7 +3653,9 @@ span[id*="PostMessageContent"].col-md-offset-2 > input {
         padding-left: 15px;
         padding-right: 15px;
     }
-
+    .library-card {
+        flex-basis: calc(50% - 30px);
+    }
 
     /*** nav ***/
     #NAV {
@@ -3781,6 +3833,9 @@ span[id*="PostMessageContent"].col-md-offset-2 > input {
     .unanswered-questions h2 input.btn-sm.btn-success {
         display: block;
         margin-left: 50px;
+    }
+    .library-card {
+        flex-basis: calc(100% - 30px);
     }
 }
 @media (max-width: 480px) {

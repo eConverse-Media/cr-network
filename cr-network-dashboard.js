@@ -81,11 +81,29 @@ function handleClose() {
 	}
 	$('.member-dashboard > .row-wide').animate({
 		scrollTop: 0
-	});
+    });
+    document.cookie = "hasClosed=true";
 }
 
 function checkForDesktop() {
-	if ($(window).width() > 991) {
+    var allCookies = document.cookie.split(';'),
+        name = "hasClosed",
+        closeCookie;
+
+    for (var i = 0; i < allCookies.length; i++) {
+        var currentCookie = allCookies[i],
+            cookieName = currentCookie.substring(0, currentCookie.indexOf('=')),
+            cookieVal = currentCookie.substring(currentCookie.indexOf('=') + 1);
+
+        cookieName = $.trim(cookieName);
+
+        if (cookieName == name &&
+        cookieVal == "true") {
+            closeCookie = true;
+        }
+    }
+
+	if ($(window).width() > 991 && !closeCookie) {
 		handleOpen();
 		$('.toggle-content').hide();
 	} else {
